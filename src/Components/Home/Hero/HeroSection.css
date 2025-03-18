@@ -82,6 +82,7 @@
   justify-content: center;
   width: 50%;
   position: relative;
+  height: 70vh;
 }
 
 .canvasModel {

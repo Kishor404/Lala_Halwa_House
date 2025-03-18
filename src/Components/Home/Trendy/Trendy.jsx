@@ -82,7 +82,7 @@ const Trendy = () => {
     <>
       <div className="trendyProducts">
         <h2>
-          Our Trendy <span>Products</span>
+          Top Customer <span>Picks</span>
         </h2>
         <div className="trendyTabs">
           <div className="tabs">
@@ -142,7 +142,7 @@ const Trendy = () => {
                     </div>
                     <div className="trendyProductInfo">
                       <div className="trendyProductCategoryWishlist">
-                        <p>Dresses</p>
+                        <p>Lala Halwa House</p>
                         <FiHeart
                           onClick={() => handleWishlistClick(product.productID)}
                           style={{
@@ -158,7 +158,7 @@ const Trendy = () => {
                           <h5>{product.productName}</h5>
                         </Link>
 
-                        <p>${product.productPrice}</p>
+                        <p>₹{product.productPrice}</p>
                         <div className="trendyProductRatingReviews">
                           <div className="trendyProductRatingStar">
                             <FaStar color="#FEC78A" size={10} />
@@ -226,7 +226,7 @@ const Trendy = () => {
                             <h5>{product.productName}</h5>
                           </Link>
 
-                          <p>${product.productPrice}</p>
+                          <p>₹{product.productPrice}</p>
                           <div className="trendyProductRatingReviews">
                             <div className="trendyProductRatingStar">
                               <FaStar color="#FEC78A" size={10} />
@@ -294,7 +294,7 @@ const Trendy = () => {
                             <h5>{product.productName}</h5>
                           </Link>
 
-                          <p>${product.productPrice}</p>
+                          <p>₹{product.productPrice}</p>
                           <div className="trendyProductRatingReviews">
                             <div className="trendyProductRatingStar">
                               <FaStar color="#FEC78A" size={10} />
@@ -362,7 +362,7 @@ const Trendy = () => {
                             <h5>{product.productName}</h5>
                           </Link>
 
-                          <p>${product.productPrice}</p>
+                          <p>₹{product.productPrice}</p>
                           <div className="trendyProductRatingReviews">
                             <div className="trendyProductRatingStar">
                               <FaStar color="#FEC78A" size={10} />

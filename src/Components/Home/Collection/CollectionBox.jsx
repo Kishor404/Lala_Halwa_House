@@ -15,9 +15,9 @@ const CollectionBox = () => {
     <>
       <div className="collection">
         <div className="collectionLeft">
-          <p className="col-p">Hot List</p>
+          <p className="col-p">Divine</p>
           <h3 className="col-h3">
-            <span>Women</span> Collection
+            <span>Palkova</span> Collection
           </h3>
           <div className="col-link">
             <Link to="/shop" onClick={scrollToTop}>
@@ -27,9 +27,9 @@ const CollectionBox = () => {
         </div>
         <div className="collectionRight">
           <div className="collectionTop">
-            <p className="col-p">Hot List</p>
+            <p className="col-p">Delicious</p>
             <h3 className="col-h3">
-              <span>Men</span> Collection
+              <span>Sweet</span> Collection
             </h3>
             <div className="col-link">
               <Link to="/shop" onClick={scrollToTop}>
@@ -39,9 +39,9 @@ const CollectionBox = () => {
           </div>
           <div className="collectionBottom">
             <div className="box1">
-              <p className="col-p">Hot List</p>
+              <p className="col-p">Hot</p>
               <h3 className="col-h3">
-                <span>Kids</span> Collection
+                <span>Spicy</span> Collection
               </h3>
               <div className="col-link">
                 <Link to="/shop" onClick={scrollToTop}>
@@ -51,10 +51,10 @@ const CollectionBox = () => {
             </div>
             <div className="box2">
               <h3 className="col-h3">
-                <span>E-gift</span> Cards
+                <span>Healty</span> Snacks
               </h3>
               <p className="col-p">
-                Surprise someone with the gift they really want.
+                The snacks that are good for your health and taste buds.
               </p>
               <div className="col-link">
                 <Link to="/shop" onClick={scrollToTop}>

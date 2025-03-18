@@ -139,14 +139,14 @@ const Footer = () => {
         </div>
         <div className="footer_bottom">
           <p>
-            © {getCurrentYear()} Uomo. All Rights Reserved | Made By{" "}
+            © {getCurrentYear()} Lala Halwa House. All Rights Reserved | Made By{" "}
             <a
-              href="https://github.com/shakti177"
+              href="https://google.com"
               target="_blank"
               rel="noreferrer"
               style={{ color: "#C22928", textDecoration: "none" }}
             >
-              Shakti Tamrakar
+              RIT CSBS
             </a>{" "}
             with ❤️
           </p>
