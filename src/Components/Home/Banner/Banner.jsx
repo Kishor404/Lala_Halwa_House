@@ -15,8 +15,8 @@ const Banner = () => {
     <>
       <div className="banner">
         <div className="bannerLeft">
-          <h6 className="bannerh6">Starting At $19</h6>
-          <h3 className="bannerh3">Women's T-shirts</h3>
+          <h6 className="bannerh6">Hot N Spicy</h6>
+          <h3 className="bannerh3">Lala's Savorys</h3>
           <h5 className="bannerh5">
             <Link to="/shop" onClick={scrollToTop} style={{ color: "white" }}>
               Shop Now
@@ -25,10 +25,10 @@ const Banner = () => {
         </div>
         <div className="bannerRight">
           <h6 className="bannerh6" style={{ color: "black" }}>
-            Starting At $39
+            Mouth Watering
           </h6>
           <h3 className="bannerh3" style={{ color: "black" }}>
-            Men's Sportswear
+            Lala's Sweets
           </h3>
           <h5 className="bannerh5">
             <Link to="/shop" onClick={scrollToTop} style={{ color: "black" }}>

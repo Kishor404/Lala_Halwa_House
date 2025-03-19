@@ -64,14 +64,13 @@
 }
 
 .box1 {
-  background-image: url("../../../Assets/Collection/collection3.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 30px;
-  background-color: #eff0f1;
+  background-color: #e3f1ff;
 }
 
 .box2 {

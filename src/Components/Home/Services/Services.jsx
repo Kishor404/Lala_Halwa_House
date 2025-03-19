@@ -11,8 +11,8 @@ const Services = () => {
       <div className="services">
         <div className="serviceBox">
           <FaCartFlatbedSuitcase size={50} style={{ marginBottom: "20px" }} />
-          <h3>Fast And Free Delivery</h3>
-          <p>Free delivery for all orders over $140</p>
+          <h3>Fast Delivery</h3>
+          <p>Quick Delivery To Your Door Steps</p>
         </div>
         <div className="serviceBox">
           <TfiHeadphoneAlt size={50} style={{ marginBottom: "20px" }} />
@@ -21,8 +21,8 @@ const Services = () => {
         </div>
         <div className="serviceBox">
           <RiShieldCheckLine size={50} style={{ marginBottom: "20px" }} />
-          <h3>Money Back Guarantee</h3>
-          <p>We return money within 30 days</p>
+          <h3>Secure Purchasing</h3>
+          <p>Purchase Are More Secure</p>
         </div>
       </div>
     </>

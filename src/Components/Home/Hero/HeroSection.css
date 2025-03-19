@@ -1,5 +1,5 @@
 .heroMain {
-  background-color: #f4e5e0;
+  background-color: #fdb74e;
   background-image: url("../../../Assets/slideshow-pattern.png");
   background-size: cover;
   padding: 0 160px;
@@ -83,6 +83,11 @@
   width: 50%;
   position: relative;
   height: 70vh;
+}
+
+.sectionright img{
+  background-color:transparent;
+  height: 350px;
 }
 
 .canvasModel {

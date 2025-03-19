@@ -14,10 +14,10 @@ const Home = () => {
       <HeroSection />
       <CollectionBox />
       <Trendy />
-      <DealTimer />
+      {/* <DealTimer /> */}
       <Banner />
       <LimitedEdition />
-      <Instagram />
+      {/* <Instagram /> */}
       <Services />
     </>
   );
