@@ -58,7 +58,7 @@ const ContactPage = () => {
               </p>
             </div>
           </div>
-          <div className="contactForm">
+          {/* <div className="contactForm">
             <h3>Get In Touch</h3>
             <form onSubmit={handleSubmit}>
               <input
@@ -84,7 +84,7 @@ const ContactPage = () => {
               />
               <button type="submit">Submit</button>
             </form>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

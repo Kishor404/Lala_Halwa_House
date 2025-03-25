@@ -21,11 +21,12 @@
 }
 
 .footer_logo_container {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .footer_logo_container img {
   background: none !important;
+  height: 100px;
 }
 
 .footer_left p {

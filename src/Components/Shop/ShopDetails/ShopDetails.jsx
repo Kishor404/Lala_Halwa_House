@@ -81,9 +81,9 @@ const ShopDetails = () => {
     <>
       <div className="shopDetails">
         <div className="shopDetailMain">
-          <div className="shopDetails__left">
+          {/* <div className="shopDetails__left">
             <Filter />
-          </div>
+          </div> */}
           <div className="shopDetails__right">
             <div className="shopDetailsSorting">
               <div className="shopDetailsBreadcrumbLink">
@@ -118,7 +118,7 @@ const ShopDetails = () => {
             </div>
             <div className="shopDetailsProducts">
               <div className="shopDetailsProductsContainer">
-                {StoreData.slice(0, 6).map((product) => (
+                {StoreData.slice(0, 12).map((product) => (
                   <div className="sdProductContainer">
                     <div className="sdProductImages">
                       <Link to="/Product" onClick={scrollToTop}>
