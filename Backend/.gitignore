@@ -1,0 +1,51 @@
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Django secret key file (if used)
+*.env
+*.secret
+
+# Database files
+db.sqlite3
+*.sqlite3
+
+# Django migration files
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Static and media files
+staticfiles/
+media/
+
+# Logs and debug files
+*.log
+*.pot
+local_settings.py
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Coverage and testing
+.coverage
+*.coverage
+htmlcov/
+
+# pip dependencies
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# MacOS and Linux system files
+.DS_Store
+Thumbs.db
