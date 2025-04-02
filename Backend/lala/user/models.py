@@ -30,7 +30,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     phone = models.CharField(_('phone'), max_length=30, unique=True)
     name = models.CharField(_('name'), max_length=30, blank=True)
-    address = models.JSONField(_('address'), blank=True)
+    address = models.JSONField(_('address'), default=dict, blank=True)
     role = models.CharField(
         max_length=10,
         choices=ROLE_CHOICES,

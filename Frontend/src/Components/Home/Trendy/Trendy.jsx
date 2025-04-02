@@ -102,7 +102,7 @@ const Trendy = () => {
               onClick={() => handleTabClick("tab3")}
               className={activeTab === "tab3" ? "active" : ""}
             >
-              Best Seller
+              Most Popular
             </p>
             <p
               onClick={() => handleTabClick("tab4")}
@@ -115,7 +115,7 @@ const Trendy = () => {
             {/* Tab 1 */}
             {activeTab === "tab1" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 10).map((product) => (
+                {StoreData.slice(0, 5).map((product) => (
                   <div className="trendyProductContainer" key={product.id}>
                     <div className="trendyProductImages">
                       <Link to="/Product" onClick={scrollToTop}>
@@ -125,7 +125,7 @@ const Trendy = () => {
                           className="trendyProduct_front"
                         />
                         <img
-                          src={product.backImg}
+                          src={product.frontImg}
                           alt=""
                           className="trendyProduct_back"
                         />
@@ -179,7 +179,7 @@ const Trendy = () => {
             {/* Tab 2 */}
             {activeTab === "tab2" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 10)
+                {StoreData.slice(0, 5)
                   .reverse()
                   .map((product) => (
                     <div className="trendyProductContainer" key={product.id}>
@@ -191,7 +191,7 @@ const Trendy = () => {
                             className="trendyProduct_front"
                           />
                           <img
-                            src={product.backImg}
+                            src={product.frontImg}
                             alt=""
                             className="trendyProduct_back"
                           />
@@ -247,7 +247,7 @@ const Trendy = () => {
             {/* Tab 3 */}
             {activeTab === "tab3" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 10)
+                {StoreData.slice(0, 5)
                   .sort(sortByReviews)
                   .map((product) => (
                     <div className="trendyProductContainer" key={product.id}>
@@ -259,7 +259,7 @@ const Trendy = () => {
                             className="trendyProduct_front"
                           />
                           <img
-                            src={product.backImg}
+                            src={product.frontImg}
                             alt=""
                             className="trendyProduct_back"
                           />
@@ -315,7 +315,7 @@ const Trendy = () => {
             {/* Tab 4 */}
             {activeTab === "tab4" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 10)
+                {StoreData.slice(0, 5)
                   .sort(sortByPrice)
                   .map((product) => (
                     <div className="trendyProductContainer" key={product.id}>
@@ -327,7 +327,7 @@ const Trendy = () => {
                             className="trendyProduct_front"
                           />
                           <img
-                            src={product.backImg}
+                            src={product.frontImg}
                             alt=""
                             className="trendyProduct_back"
                           />

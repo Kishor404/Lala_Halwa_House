@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-    'user'
+    'user',
+    'franchise',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +158,8 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+import os
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

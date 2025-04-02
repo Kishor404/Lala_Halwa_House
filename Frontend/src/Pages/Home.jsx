@@ -15,10 +15,10 @@ const Home = () => {
       <CollectionBox />
       <Trendy />
       {/* <DealTimer /> */}
-      <Banner />
-      <LimitedEdition />
-      {/* <Instagram /> */}
       <Services />
+      <Banner />
+      {/* <LimitedEdition /> */}
+      {/* <Instagram /> */}
     </>
   );
 };
