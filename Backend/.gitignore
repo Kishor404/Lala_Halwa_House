@@ -7,7 +7,7 @@ __pycache__/
 venv/
 env/
 
-# Django secret key file (if used)
+# Django secret key file (if used) 
 *.env
 *.secret
 
