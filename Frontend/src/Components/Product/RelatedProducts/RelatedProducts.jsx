@@ -12,6 +12,7 @@ import StoreData from "../../../Data/StoreData";
 import { FiHeart } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const RelatedProducts = () => {
   const [wishList, setWishList] = useState({});
@@ -76,15 +77,15 @@ const RelatedProducts = () => {
             {StoreData.slice(0, 8).map((product) => {
               return (
                 <SwiperSlide key={product.productID}>
-                  <div className="rpContainer">
-                    <div className="rpImages" onClick={scrollToTop}>
+                  <Link className="rpContainer" state={{ product }} onClick={scrollToTop}>
+                    <div className="rpImages">
                       <img
                         src={product.frontImg}
                         alt={product.productName}
                         className="rpFrontImg"
                       />
                       <img
-                        src={product.backImg}
+                        src={product.frontImg}
                         className="rpBackImg"
                         alt={product.productName}
                       />
@@ -120,7 +121,7 @@ const RelatedProducts = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </SwiperSlide>
               );
             })}

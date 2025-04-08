@@ -4,6 +4,7 @@ from rest_framework import status
 from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
+from cart.models import Cart
 
 User = get_user_model()
 
@@ -12,6 +13,9 @@ class RegisterView(APIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+            cart=Cart.objects.create(user=user)
+            user.cart = cart.id
+            user.save()
             refresh = RefreshToken.for_user(user)
             return Response({
                 'user': UserSerializer(user).data,

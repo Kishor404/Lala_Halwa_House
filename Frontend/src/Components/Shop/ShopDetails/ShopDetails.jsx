@@ -121,7 +121,7 @@ const ShopDetails = () => {
                 {StoreData.slice(0, 12).map((product) => (
                   <div className="sdProductContainer">
                     <div className="sdProductImages">
-                      <Link to="/Product" onClick={scrollToTop}>
+                      <Link to="/Product" state={{ product }} onClick={scrollToTop}>
                         <img
                           src={product.frontImg}
                           alt=""

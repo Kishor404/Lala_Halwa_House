@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./LoginSignUp.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const LoginSignUp = () => {
   const [activeTab, setActiveTab] = useState("tabButton1");
@@ -33,7 +34,12 @@ const LoginSignUp = () => {
       console.log("Login Successful:", response.data);
   
       // Store token in localStorage
-      localStorage.setItem("token", response.data.token);
+      Cookies.set("rToken", response.data.refresh, { expires: 7 });
+      Cookies.set("cart", response.data.user.cart, { expires: 7 });
+      Cookies.set("userid", response.data.user.id, { expires: 7 });
+      Cookies.set("username", response.data.user.name, { expires: 7 });
+      Cookies.set("userphone", response.data.user.phone, { expires: 7 });
+      
     } catch (error) {
       console.error("Login Failed:", error.response ? error.response.data : error.message);
     }

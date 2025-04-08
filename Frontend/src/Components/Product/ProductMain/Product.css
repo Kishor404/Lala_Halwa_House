@@ -29,10 +29,12 @@
 }
 
 .productFullImg img {
-  width: 520px;
-  height: 520px;
+  width: 440px;
+  height: 440px;
   pointer-events: none;
-  background-color: #767676;
+  background-color: #d3d3d3;
+  object-fit: contain;
+  padding: 40px;
 }
 
 .buttonsGroup {

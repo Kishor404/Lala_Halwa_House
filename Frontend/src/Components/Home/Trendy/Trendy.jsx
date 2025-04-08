@@ -7,6 +7,8 @@ import StoreData from "../../../Data/StoreData";
 import { FiHeart } from "react-icons/fi";
 import { FaStar, FaCartPlus } from "react-icons/fa";
 import toast from "react-hot-toast";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Trendy = () => {
   const dispatch = useDispatch();
@@ -45,35 +47,67 @@ const Trendy = () => {
 
   const cartItems = useSelector((state) => state.cart.items);
 
-  const handleAddToCart = (product) => {
-    const productInCart = cartItems.find(
-      (item) => item.productID === product.productID
-    );
 
-    if (productInCart && productInCart.quantity >= 20) {
-      toast.error("Product limit reached", {
-        duration: 2000,
-        style: {
-          backgroundColor: "#ff4b4b",
-          color: "white",
-        },
-        iconTheme: {
-          primary: "#fff",
-          secondary: "#ff4b4b",
+  // =========================== REFRESH TOKEN ==============================
+
+  const refreshAccessToken = async () => {
+    try {
+      const refresh = Cookies.get('rToken');
+  
+      if (!refresh) {
+        throw new Error('No refresh token found');
+      }
+  
+      const response = await axios.post('http://localhost:8000/log/token/refresh/', {
+        refresh: refresh,
+      });
+  
+      const newAccess = response.data.access;
+      const newRefresh = response.data.refresh;
+      Cookies.set('access', newAccess, { expires: 7 }); // Store the new access token
+      Cookies.set('rToken', newRefresh, { expires: 7 }); // Store the new access token
+  
+      console.log('Access token refreshed!');
+      return newAccess;
+  
+    } catch (error) {
+      console.error('Failed to refresh token:', error.response?.data || error.message);
+      // localStorage.clear();
+      // window.location.href = '/login';
+  
+      return null;
+    }
+  };
+
+  //==========================================================================================
+
+  //========================= ADD TO CART ====================================================
+
+  const handleAddToCart = async(product) => {
+
+    const data={"product":product.productID, "quantity":1};
+    const cart = Cookies.get('cart');
+    const aToken = await refreshAccessToken();
+    try {
+      const response = await axios.post('http://localhost:8000/cart/'+cart+'/add_item/', data, {
+        headers: {
+          Authorization: `Bearer ${aToken}`,
         },
       });
-    } else {
-      dispatch(addToCart(product));
+
+      console.log('Add To Cart Success:', response.data);
       toast.success(`Added to cart!`, {
         duration: 2000,
-        style: {
-          backgroundColor: "#07bc0c",
-          color: "white",
-        },
-        iconTheme: {
-          primary: "#fff",
-          secondary: "#07bc0c",
-        },
+        style: {backgroundColor: "#07bc0c",color: "white",},
+        iconTheme: {primary: "#fff",secondary: "#07bc0c",},
+      });
+
+    } catch (error) {
+      console.error('Add To Cart Failed:', error.response?.data || error.message);
+      toast.error("Error Occur! Try Again After Sometime", {
+        duration: 2000,
+        style: {backgroundColor: "#ff4b4b",color: "white",},
+        iconTheme: {primary: "#fff",secondary: "#ff4b4b",},
       });
     }
   };

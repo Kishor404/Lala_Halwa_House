@@ -1,5 +1,5 @@
 .heroMain {
-  background-color: #fdb74e;
+  background-color: #0009ad;
   background-image: url("../../../Assets/slideshow-pattern.png");
   background-size: cover;
   padding: 0 160px;
@@ -18,7 +18,7 @@
 .sectionleft p {
   position: relative;
   padding-left: 50px;
-  color: #c22928;
+  color: #ffbb00;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -28,7 +28,7 @@
   display: block;
   width: 35px;
   height: 2px;
-  background-color: #c32929;
+  background-color: #ffbb00;
   position: absolute;
   left: 0;
   top: 50%;
@@ -39,6 +39,11 @@
   font-size: 70px;
   text-transform: uppercase;
   font-weight: 700;
+  color:white;
+}
+
+.sectionleft span{
+  color: white;
 }
 
 .heroLink {
@@ -47,7 +52,7 @@
 
 .sectionleft a {
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .sectionleft a {
@@ -60,7 +65,7 @@
   left: 0;
   bottom: -5px;
   width: 75%;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(255, 255, 255);
   transition: width 0.2s ease;
 }
 
