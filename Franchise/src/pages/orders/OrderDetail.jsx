@@ -12,27 +12,33 @@ import truck from '../../images/common/delivery-truck.gif'
 // import truck from '../../images/common/delivery-truck-2.gif'
 // import truck from '../../images/common/delivery-truck-3.gif'
 
+import OrderData from "../../api/OrderData.jsx";
+
 const OrderDetail = () => {
   const { orderID } = useParams();
 
+  console.log("Order ID:", orderID);
+
   // Find the specific order using orderID from URL params
-  const order = Orders.find(
+  const order = OrderData.find(
     (order) => order.id.toString() === orderID.toString()
   );
 
+  console.log(order);
+
   const customer = Customers.find(
-    (customer) => customer.id.toString() === order.customer_id.toString()
+    (customer) => customer.id.toString() === order.user.toString()
   );
 
-  const products = order.products.map((productID) => {
-    const product = Products.find(
-      (product) => product.id.toString() === productID.product_id.toString()
-    );
-    return {
-      ...product,
-      quantity: productID.quantity,
-    };
-  });
+  // const products = order.products.map((productID) => {
+  //   const product = Products.find(
+  //     (product) => product.id.toString() === productID.product_id.toString()
+  //   );
+  //   return {
+  //     ...product,
+  //     quantity: productID.quantity,
+  //   };
+  // });
   const handleInvoice = () => {
     alert("Under Construction invoice page");
   }
@@ -54,54 +60,54 @@ const OrderDetail = () => {
               <table className="bordered">
                 <thead>
                   <tr>
-                    <th>image</th>
+                    {/* <th>image</th> */}
                     <th>name</th>
                     <th>Item price</th>
                     <th>Quantity</th>
-                    <th>Rating</th>
+                    {/* <th>Rating</th> */}
                     <th>Total Amount</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map((product) => (
+                  {order.products.map((product) => (
                     <tr key={product.id}>
-                      <td>
+                      {/* <td>
                         <img src={product.images.thumbnail} alt="" />
-                      </td>
+                      </td> */}
                       <td>
                         <Link
-                          to={`/catalog/product/manage/${product.id.toString()}`}
+                          // to={`/catalog/product/manage/${product.id.toString()}`}
                         >
-                          {product.name}
+                          {product.product_name}
                         </Link>
                       </td>
                       <td>${product.price}</td>
                       <td>{product.quantity}</td>
-                      <td>
+                      {/* <td>
                         <Rating value={product.ratings.average_rating} />
-                      </td>
+                      </td> */}
                       <td>${product.price * product.quantity}</td>
                     </tr>
                   ))}
                   <tr>
                     <td colSpan="5" className="td_no_p"><b>Sub Total</b></td>
-                    <td colSpan="1" className="td_no_p"><b>$359.96</b></td>
+                    <td colSpan="1" className="td_no_p"><b>${order.payment_details.amount}</b></td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <td colSpan="5" className="td_no_p"><b>Discount (VELZON15) : :</b></td>
                     <td colSpan="1" className="td_no_p"><b>-$53.99</b></td>
-                  </tr>
+                  </tr> */}
                   <tr>
                     <td colSpan="5" className="td_no_p"><b>Shipping Charge :</b></td>
-                    <td colSpan="1" className="td_no_p"><b>$65.00</b></td>
+                    <td colSpan="1" className="td_no_p"><b>${order.payment_details.shipping_amount}</b></td>
                   </tr>
                   <tr>
                     <td colSpan="5" className="td_no_p"><b>Estimated Tax :</b></td>
-                    <td colSpan="1" className="td_no_p"><b>$44.99</b></td>
+                    <td colSpan="1" className="td_no_p"><b>${order.payment_details.tax_amount}</b></td>
                   </tr>
                   <tr>
                     <td colSpan="5" className="td_no_p"><b>Total amount</b></td>
-                    <td colSpan="1" className="td_no_p"><b>$44.99</b></td>
+                    <td colSpan="1" className="td_no_p"><b>${order.total_price}</b></td>
                   </tr>
                 </tbody>
               </table>
@@ -125,7 +131,7 @@ const OrderDetail = () => {
                   <div key={index} className="order_status_item">
                     <div className="order_status_icon">
                       {
-                        status.status.toLowerCase() === "order placed" ? (
+                        status.status.toLowerCase() === "Pending" ? (
                           <Icons.TbChecklist/>
                         ) :
                         status.status.toLowerCase() === "processing" ? (
@@ -188,7 +194,7 @@ const OrderDetail = () => {
                   <div className="detail_list_item">
                     <b>Payment Status:</b>
                       {order.payment_details.status.toLowerCase() === "active" ||
-                      order.payment_details.status.toLowerCase() === "completed" ||
+                      order.payment_details.status.toLowerCase() === "Completed" ||
                       order.payment_details.status.toLowerCase() === "approved" ||
                       order.payment_details.status.toLowerCase() === "delivered" ||
                       order.payment_details.status.toLowerCase() === "success" ||

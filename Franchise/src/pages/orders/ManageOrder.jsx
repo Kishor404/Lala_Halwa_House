@@ -12,6 +12,9 @@ import Pagination from "../../components/common/Pagination.jsx";
 import TableAction from "../../components/common/TableAction.jsx";
 import SelectOption from "../../components/common/SelectOption.jsx";
 
+import OrderData from "../../api/OrderData.jsx";
+
+
 const ManageOrders = () => {
   const [bulkCheck, setBulkCheck] = useState(false);
   const [specificChecks, setSpecificChecks] = useState({});
@@ -75,12 +78,12 @@ const ManageOrders = () => {
 
   const actionItems = ["Delete","View", "Edit"];
 
-  const handleActionItemClick = (item, itemID) => {
+  const handleActionItemClick = (item, orderId) => {
     var updateItem = item.toLowerCase();
     if (updateItem === "delete") {
-      alert(`#${itemID} item delete`);
+      alert(`#${orderId} item delete`);
     } else if (updateItem === "view") {
-      navigate(`/orders/manage/${itemID.toString()}`);
+      navigate(`/orders/manage/${orderId.toString()}`);
     }
   };
 
@@ -123,18 +126,16 @@ const ManageOrders = () => {
                       </th>
                       <th className="td_id">id</th>
                       <th>Customers</th>
-                      <th>Email</th>
                       <th>phone</th>
                       <th>amount</th>
-                      <th>tex amount</th>
-                      <th>shipping amount</th>
                       <th>payment method</th>
                       <th>payment status</th>
+                      <th>status</th>
                       <th>actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {orders.map((order, key) => {
+                    {OrderData.map((order, key) => {
                       return (
                         <tr key={key}>
                           <td className="td_checkbox">
@@ -147,20 +148,17 @@ const ManageOrders = () => {
                           </td>
                           <td className="td_id">{order.id}</td>
                           <td>
-                          	<Link to={`/customers/manage/${customer[key].id}`}>{customer[key].name}</Link>
+                          	<Link>{order.user}</Link>
                           </td>
-                          <td>{customer[key].contact.email}</td>
-                          <td>{customer[key].contact.phone}</td>
-                          <td>{order.payment_details.amount}</td>
-                          <td>{order.payment_details.tax_amount}</td>
-                          <td>{order.payment_details.shipping_amount}</td>
+                          <td>{order.user}</td>
+                          <td>{order.total_price}</td>
                           <td>{order.payment_details.payment_method}</td>
                           <td>
                           	{order.status.toLowerCase() === "active" ||
                            order.status.toLowerCase() === "completed" ||
                            order.status.toLowerCase() === "approved" ||
-                           order.status.toLowerCase() === "delivered" ||
-                           order.status.toLowerCase() === "shipped" ||
+                           order.status.toLowerCase() === "Delivered" ||
+                           order.status.toLowerCase() === "Shipped" ||
                            order.status.toLowerCase() === "new" ||
                            order.status.toLowerCase() === "coming soon" ? (
                              <Badge
@@ -171,7 +169,7 @@ const ManageOrders = () => {
                              order.status.toLowerCase() === "out of stock" ||
                              order.status.toLowerCase() === "rejected" ||
                              order.status.toLowerCase() === "locked" ||
-                             order.status.toLowerCase() === "discontinued" ? (
+                             order.status.toLowerCase() === "Cancelled" ? (
                              <Badge
                                label={order.status}
                                className="light-danger"
@@ -179,8 +177,8 @@ const ManageOrders = () => {
                            ) : order.status.toLowerCase() === "on sale" ||
                                order.status.toLowerCase() === "featured" ||
                                order.status.toLowerCase() === "shipping" ||
-                               order.status.toLowerCase() === "processing" ||
-                               order.status.toLowerCase() === "pending" ? (
+                               order.status.toLowerCase() === "Processing" ||
+                               order.status.toLowerCase() === "Pending" ? (
                              <Badge
                                label={order.status}
                                className="light-warning"
@@ -193,6 +191,46 @@ const ManageOrders = () => {
                              />
                            ) : (
                              order.status
+                           )}
+                          </td>
+                          <td>
+                          	{order.payment_details.status.toLowerCase() === "active" ||
+                           order.payment_details.status.toLowerCase() === "completed" ||
+                           order.payment_details.status.toLowerCase() === "approved" ||
+                           order.payment_details.status.toLowerCase() === "Delivered" ||
+                           order.payment_details.status.toLowerCase() === "Shipped" ||
+                           order.payment_details.status.toLowerCase() === "new" ||
+                           order.payment_details.status.toLowerCase() === "coming soon" ? (
+                             <Badge
+                               label={order.payment_details.status}
+                               className="light-success"
+                             />
+                           ) : order.payment_details.status.toLowerCase() === "inactive" ||
+                             order.payment_details.status.toLowerCase() === "out of stock" ||
+                             order.payment_details.status.toLowerCase() === "rejected" ||
+                             order.payment_details.status.toLowerCase() === "locked" ||
+                             order.payment_details.status.toLowerCase() === "Cancelled" ? (
+                             <Badge
+                               label={order.payment_details.status}
+                               className="light-danger"
+                             />
+                           ) : order.payment_details.status.toLowerCase() === "on sale" ||
+                               order.payment_details.status.toLowerCase() === "featured" ||
+                               order.payment_details.status.toLowerCase() === "shipping" ||
+                               order.payment_details.status.toLowerCase() === "Processing" ||
+                               order.payment_details.status.toLowerCase() === "Pending" ? (
+                             <Badge
+                               label={order.payment_details.status}
+                               className="light-warning"
+                             />
+                           ) : order.payment_details.status.toLowerCase() === "archive" ||
+                               order.payment_details.status.toLowerCase() === "pause" ? (
+                             <Badge
+                               label={order.payment_details.status}
+                               className="light-secondary"
+                             />
+                           ) : (
+                             order.payment_details.status
                            )}
                           </td>
                           <td className="td_action">
