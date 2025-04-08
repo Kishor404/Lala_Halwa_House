@@ -118,7 +118,7 @@ const Trendy = () => {
                 {StoreData.slice(0, 5).map((product) => (
                   <div className="trendyProductContainer" key={product.id}>
                     <div className="trendyProductImages">
-                      <Link to="/Product" onClick={scrollToTop}>
+                      <Link to="/Product" state={{ product }} onClick={scrollToTop}>
                         <img
                           src={product.frontImg}
                           alt=""

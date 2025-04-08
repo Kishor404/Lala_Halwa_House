@@ -10,6 +10,8 @@ import product2 from "../../../Assets/ProductDetail/productdetail-2.jpg";
 import product3 from "../../../Assets/ProductDetail/productdetail-3.jpg";
 import product4 from "../../../Assets/ProductDetail/productdetail-4.jpg";
 
+import { useLocation } from "react-router-dom";
+
 import { GoChevronLeft } from "react-icons/go";
 import { GoChevronRight } from "react-icons/go";
 import { FaStar } from "react-icons/fa";
@@ -24,6 +26,11 @@ import "./Product.css";
 
 const Product = () => {
   // Product images Gallery
+
+  const location = useLocation();
+  const product = location.state?.product;
+
+  console.log(product);
 
   const productImg = [product1, product2, product3, product4];
   const [currentImg, setCurrentImg] = useState(0);
@@ -67,7 +74,7 @@ const Product = () => {
 
   // Product Sizes
 
-  const sizes = ["XS", "S", "M", "L", "XL"];
+  const sizes = [50, 100, 250, 500, 1000];
   const sizesFullName = [
     "Extra Small",
     "Small",
@@ -75,7 +82,7 @@ const Product = () => {
     "Large",
     "Extra Large",
   ];
-  const [selectSize, setSelectSize] = useState("S");
+  const [selectSize, setSelectSize] = useState(50);
 
   // Product Colors
 
@@ -135,22 +142,22 @@ const Product = () => {
       <div className="productSection">
         <div className="productShowCase">
           <div className="productGallery">
-            <div className="productThumb">
+            {/* <div className="productThumb">
               <img src={product1} onClick={() => setCurrentImg(0)} alt="" />
               <img src={product2} onClick={() => setCurrentImg(1)} alt="" />
               <img src={product3} onClick={() => setCurrentImg(2)} alt="" />
               <img src={product4} onClick={() => setCurrentImg(3)} alt="" />
-            </div>
+            </div> */}
             <div className="productFullImg">
-              <img src={productImg[currentImg]} alt="" />
-              <div className="buttonsGroup">
+              <img src={product.frontImg} alt="" />
+              {/* <div className="buttonsGroup">
                 <button onClick={prevImg} className="directionBtn">
                   <GoChevronLeft size={18} />
                 </button>
                 <button onClick={nextImg} className="directionBtn">
                   <GoChevronRight size={18} />
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="productDetails">
@@ -159,7 +166,7 @@ const Product = () => {
                 <Link to="/">Home</Link>&nbsp;/&nbsp;
                 <Link to="/shop">The Shop</Link>
               </div>
-              <div className="prevNextLink">
+              {/* <div className="prevNextLink">
                 <Link to="/product">
                   <GoChevronLeft />
                   <p>Prev</p>
@@ -168,10 +175,10 @@ const Product = () => {
                   <p>Next</p>
                   <GoChevronRight />
                 </Link>
-              </div>
+              </div> */}
             </div>
             <div className="productName">
-              <h1>Lightweight Puffer Jacket With a Hood</h1>
+              <h1>{product.productName}</h1>
             </div>
             <div className="productRating">
               <FaStar color="#FEC78A" size={10} />
@@ -182,19 +189,16 @@ const Product = () => {
               <p>8k+ reviews</p>
             </div>
             <div className="productPrice">
-              <h3>$90</h3>
+              <h3>${product.productPrice/50*selectSize*quantity}</h3>
             </div>
             <div className="productDescription">
               <p>
-                Phasellus sed volutpat orci. Fusce eget lore mauris vehicula
-                elementum gravida nec dui. Aenean aliquam varius ipsum, non
-                ultricies tellus sodales eu. Donec dignissim viverra nunc, ut
-                aliquet magna posuere eget.
+                {product.productDescription}
               </p>
             </div>
             <div className="productSizeColor">
               <div className="productSize">
-                <p>Sizes</p>
+                <p>Size</p>
                 <div className="sizeBtn">
                   {sizes.map((size, index) => (
                     <Tooltip
@@ -211,13 +215,13 @@ const Product = () => {
                         }}
                         onClick={() => setSelectSize(size)}
                       >
-                        {size}
+                        {size+"g"}
                       </button>
                     </Tooltip>
                   ))}
                 </div>
               </div>
-              <div className="productColor">
+              {/* <div className="productColor">
                 <p>Color</p>
                 <div className="colorBtn">
                   {colors.map((color, index) => (
@@ -248,7 +252,7 @@ const Product = () => {
                     </Tooltip>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="productCartQuantity">
               <div className="productQuantity">
@@ -278,13 +282,10 @@ const Product = () => {
             </div>
             <div className="productTags">
               <p>
-                <span>SKU: </span>N/A
+                <span>FRANCHISE: </span>{product.Franchise.name}
               </p>
               <p>
-                <span>CATEGORIES: </span>Casual & Urban Wear, Jackets, Men
-              </p>
-              <p>
-                <span>TAGS: </span>biker, black, bomber, leather
+                <span>CATEGORIES: </span>{product.Category.name}
               </p>
             </div>
           </div>

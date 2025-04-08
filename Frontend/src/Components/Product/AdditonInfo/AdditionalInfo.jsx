@@ -7,7 +7,12 @@ import user2 from "../../../Assets/Users/user2.jpeg";
 import { FaStar } from "react-icons/fa";
 import Rating from "@mui/material/Rating";
 
+import { useLocation } from "react-router-dom";
+
 const AdditionalInfo = () => {
+
+  const location = useLocation();
+  const product = location.state?.product;
   const [activeTab, setActiveTab] = useState("aiTab1");
 
   const handleTabClick = (tab) => {
@@ -102,24 +107,20 @@ const AdditionalInfo = () => {
             {activeTab === "aiTab2" && (
               <div className="aiTabAdditionalInfo">
                 <div className="additionalInfoContainer">
-                  <h6>Weight</h6>
-                  <p> 1.25 kg</p>
+                  <h6>Price</h6>
+                  <p> {product.productPrice} per 50g</p>
                 </div>
                 <div className="additionalInfoContainer">
-                  <h6>Dimensions</h6>
-                  <p> 90 x 60 x 90 cm</p>
+                  <h6>Category</h6>
+                  <p> {product.Category.name}</p>
                 </div>
                 <div className="additionalInfoContainer">
                   <h6>Size</h6>
-                  <p> XS, S, M, L, XL</p>
+                  <p> 50g, 100g, 250g, 500g, 1kg</p>
                 </div>
                 <div className="additionalInfoContainer">
-                  <h6>Color</h6>
-                  <p> Black, Orange, White</p>
-                </div>
-                <div className="additionalInfoContainer">
-                  <h6>Storage</h6>
-                  <p> Relaxed fit shirt-style dress with a rugged</p>
+                  <h6>Franchise</h6>
+                  <p> {product.Franchise.name}</p>
                 </div>
               </div>
             )}
