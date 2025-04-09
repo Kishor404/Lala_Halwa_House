@@ -64,11 +64,11 @@ const Navbar = () => {
                   SHOP
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/blog" onClick={scrollToTop}>
                   BLOG
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/about" onClick={scrollToTop}>
                   ABOUT
@@ -152,11 +152,11 @@ const Navbar = () => {
                     SHOP
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/blog" onClick={toggleMobileMenu}>
                     BLOG
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/about" onClick={toggleMobileMenu}>
                     ABOUT

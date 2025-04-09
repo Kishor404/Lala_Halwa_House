@@ -23,7 +23,7 @@ const AboutPage = () => {
     <>
       <div className="aboutSection">
         <h2>About "Lala's Halwa House"</h2>
-        <img src={about1} alt="" />
+        <img src={about1} alt="" className="about-main-img" />
         <div className="aboutContent">
           <h3>Our Story</h3>
           <h4>

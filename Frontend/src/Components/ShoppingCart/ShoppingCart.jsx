@@ -199,7 +199,8 @@ const ShoppingCart = () => {
                             <td data-label="Subtotal">
                               <p
                                 style={{
-                                  textAlign: "start",
+                                  textAlign: "left",
+                                  paddingLeft:"20px",
                                   fontWeight: "500",
                                 }}
                               >
