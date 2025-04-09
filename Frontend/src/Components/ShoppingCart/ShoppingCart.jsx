@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./ShoppingCart.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   removeFromCart,
   updateQuantity,
-  selectCartTotalAmount,
 } from "../../Features/Cart/cartSlice";
 
 import { MdOutlineClose } from "react-icons/md";
@@ -13,15 +12,16 @@ import { Link } from "react-router-dom";
 
 import success from "../../Assets/success.png";
 
+import cartData from "../../Data/CartData";
+
 const ShoppingCart = () => {
-  const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
   const [activeTab, setActiveTab] = useState("cartTab1");
   const [payments, setPayments] = useState(false);
 
   const handleTabClick = (tab) => {
-    if (tab === "cartTab1" || cartItems.length > 0) {
+    if (tab === "cartTab1" || cartData[0].items.length > 0) {
       setActiveTab(tab);
     }
   };
@@ -31,8 +31,6 @@ const ShoppingCart = () => {
       dispatch(updateQuantity({ productID: productId, quantity: quantity }));
     }
   };
-
-  const totalPrice = useSelector(selectCartTotalAmount);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -94,7 +92,7 @@ const ShoppingCart = () => {
                 handleTabClick("cartTab2");
                 setPayments(false);
               }}
-              disabled={cartItems.length === 0}
+              disabled={cartData[0].items.length === 0}
             >
               <div className="shoppingCartTabsNumber">
                 <h3>02</h3>
@@ -109,7 +107,7 @@ const ShoppingCart = () => {
               onClick={() => {
                 handleTabClick("cartTab3");
               }}
-              disabled={cartItems.length === 0 || payments === false}
+              disabled={cartData[0].items.length === 0 || payments === false}
             >
               <div className="shoppingCartTabsNumber">
                 <h3>03</h3>
@@ -130,7 +128,7 @@ const ShoppingCart = () => {
                     <thead>
                       <tr>
                         <th>Product</th>
-                        <th></th>
+                        <th>Detail</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Subtotal</th>
@@ -138,8 +136,8 @@ const ShoppingCart = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {cartItems.length > 0 ? (
-                        cartItems.map((item) => (
+                      {cartData[0].items.length > 0 ? (
+                        cartData[0].items.map((item) => (
                           <tr key={item.productID}>
                             <td data-label="Product">
                               <div className="shoppingBagTableImg">
@@ -153,14 +151,14 @@ const ShoppingCart = () => {
                                 <Link to="/product" onClick={scrollToTop}>
                                   <h4>{item.productName}</h4>
                                 </Link>
-                                <p>{item.productReviews}</p>
+                                <p>{item.franchise}</p>
                               </div>
                             </td>
                             <td
                               data-label="Price"
-                              style={{ textAlign: "center" }}
+                              style={{ textAlign: "start" }}
                             >
-                              ${item.productPrice}
+                              ${item.price}
                             </td>
                             <td data-label="Quantity">
                               <div className="ShoppingBagTableQuantity">
@@ -201,11 +199,11 @@ const ShoppingCart = () => {
                             <td data-label="Subtotal">
                               <p
                                 style={{
-                                  textAlign: "center",
+                                  textAlign: "start",
                                   fontWeight: "500",
                                 }}
                               >
-                                ${item.quantity * item.productPrice}
+                                ${item.total_price}
                               </p>
                             </td>
                             <td data-label="">
@@ -239,7 +237,7 @@ const ShoppingCart = () => {
                           padding: "20px 0px",
                         }}
                       >
-                        {cartItems.length > 0 && (
+                        {cartData[0].items.length > 0 && (
                           <div className="shopCartFooterContainer">
                             <form>
                               <input
@@ -271,9 +269,9 @@ const ShoppingCart = () => {
                   {/* For Mobile devices */}
 
                   <div className="shoppingBagTableMobile">
-                    {cartItems.length > 0 ? (
+                    {cartData[0].items.length > 0 ? (
                       <>
-                        {cartItems.map((item) => (
+                        {cartData[0].items.map((item) => (
                           <div key={item.productID}>
                             <div className="shoppingBagTableMobileItems">
                               <div className="shoppingBagTableMobileItemsImg">
@@ -378,13 +376,13 @@ const ShoppingCart = () => {
                     <tbody>
                       <tr>
                         <th>Subtotal</th>
-                        <td>${totalPrice.toFixed(2)}</td>
+                        <td>${cartData[0].total_price.toFixed(2)}</td>
                       </tr>
                       <tr>
                         <th>Shipping</th>
                         <td>
                           <div className="shoppingBagTotalTableCheck">
-                            <p>${(totalPrice === 0 ? 0 : 5).toFixed(2)}</p>
+                            <p>${(cartData[0].total_price === 0 ? 0 : 100).toFixed(2)}</p>
                             <p>Shipping to Al..</p>
                             <p
                               onClick={scrollToTop}
@@ -399,12 +397,12 @@ const ShoppingCart = () => {
                       </tr>
                       <tr>
                         <th>VAT</th>
-                        <td>${(totalPrice === 0 ? 0 : 11).toFixed(2)}</td>
+                        <td>${(cartData[0].total_price === 0 ? 0 : cartData[0].total_price*13/100).toFixed(2)}</td>
                       </tr>
                       <tr>
                         <th>Total</th>
                         <td>
-                          ${(totalPrice === 0 ? 0 : totalPrice + 16).toFixed(2)}
+                          ${(cartData[0].total_price === 0 ? 0 : cartData[0].total_price+(cartData[0].total_price*13/100)+100).toFixed(2)}
                         </td>
                       </tr>
                     </tbody>
@@ -414,7 +412,7 @@ const ShoppingCart = () => {
                       handleTabClick("cartTab2");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    disabled={cartItems.length === 0}
+                    disabled={cartData[0].items.length === 0}
                   >
                     Proceed to Checkout
                   </button>
@@ -483,12 +481,12 @@ const ShoppingCart = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {cartItems.map((items) => (
+                          {cartData[0].items.map((items) => (
                             <tr>
                               <td>
-                                {items.productName} x {items.quantity}
+                                {items.product_name} x {items.quantity}
                               </td>
-                              <td>${items.productPrice * items.quantity}</td>
+                              <td>${items.total_price}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -499,21 +497,21 @@ const ShoppingCart = () => {
                         <tbody>
                           <tr>
                             <th>Subtotal</th>
-                            <td>${totalPrice.toFixed(2)}</td>
+                            <td>${cartData[0].total_price.toFixed(2)}</td>
                           </tr>
                           <tr>
                             <th>Shipping</th>
-                            <td>$5</td>
+                            <td>$100</td>
                           </tr>
                           <tr>
                             <th>VAT</th>
-                            <td>$11</td>
+                            <td>${cartData[0].total_price*13/100}</td>
                           </tr>
                           <tr>
                             <th>Total</th>
                             <td>
                               $
-                              {(totalPrice === 0 ? 0 : totalPrice + 16).toFixed(
+                              {(cartData[0].total_price === 0 ? 0 : cartData[0].total_price + (cartData[0].total_price*13/100) + 100).toFixed(
                                 2
                               )}
                             </td>
@@ -637,7 +635,7 @@ const ShoppingCart = () => {
                     </div>
                     <div className="orderInfoItem">
                       <p>Total</p>
-                      <h4>${totalPrice.toFixed(2)}</h4>
+                      <h4>${(cartData[0].total_price === 0 ? 0 : cartData[0].total_price + (cartData[0].total_price*13/100) + 100).toFixed(2)}</h4>
                     </div>
                     <div className="orderInfoItem">
                       <p>Payment Method</p>
@@ -655,12 +653,12 @@ const ShoppingCart = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {cartItems.map((items) => (
+                          {cartData[0].items.map((items) => (
                             <tr>
                               <td>
-                                {items.productName} x {items.quantity}
+                                {items.product_name} x {items.quantity}
                               </td>
-                              <td>${items.productPrice * items.quantity}</td>
+                              <td>${items.total_price}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -671,23 +669,21 @@ const ShoppingCart = () => {
                         <tbody>
                           <tr>
                             <th>Subtotal</th>
-                            <td>${totalPrice.toFixed(2)}</td>
+                            <td>${cartData[0].total_price.toFixed(2)}</td>
                           </tr>
                           <tr>
                             <th>Shipping</th>
-                            <td>$5</td>
+                            <td>$100</td>
                           </tr>
                           <tr>
                             <th>VAT</th>
-                            <td>$11</td>
+                            <td>${(cartData[0].total_price*13/100).toFixed(2)}</td>
                           </tr>
                           <tr>
                             <th>Total</th>
                             <td>
                               $
-                              {(totalPrice === 0 ? 0 : totalPrice + 16).toFixed(
-                                2
-                              )}
+                              {(cartData[0].total_price === 0 ? 0 : cartData[0].total_price + (cartData[0].total_price*13/100) + 100).toFixed(2)}
                             </td>
                           </tr>
                         </tbody>

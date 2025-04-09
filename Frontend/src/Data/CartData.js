@@ -1,50 +1,61 @@
 import axios from "axios";
+import Cookies from 'js-cookie';
+import StoreData from "./StoreData";
 
-// import Product_1 from "../Assets/Products/product_1.jpg";
-// import Product_1_1 from "../Assets/Products/product_1-1.jpg";
+// =========================== REFRESH TOKEN ==============================
 
-// import limited1 from "../Assets/LimitedEdition/limited-1.jpg";
-// import limited2 from "../Assets/LimitedEdition/limited-2.jpg";
-// let StoreData = [
-//   {
-//     productID: 1,
-//     frontImg: Product_1,
-//     backImg: Product_1_1,
-//     productName: "Sriviliputhur Palkova",
-//     productPrice: 199,
-//     productReviews: "8k+ reviews",
-//   },
-//   {
-//     productID: 2,
-//     frontImg: Product_1,
-//     backImg: Product_1_1,
-//     productName: "Calvin Shorts",
-//     productPrice: 62,
-//     productReviews: "2k+ reviews",
-//   },
-// ];
+  const refreshAccessToken = async () => {
+    try {
+      const refresh = Cookies.get('rToken');
+  
+      if (!refresh) {
+        throw new Error('No refresh token found');
+      }
+  
+      const response = await axios.post('http://localhost:8000/log/token/refresh/', {
+        refresh: refresh,
+      });
+  
+      const newAccess = response.data.access;
+      const newRefresh = response.data.refresh;
+      Cookies.set('access', newAccess, { expires: 7 }); // Store the new access token
+      Cookies.set('rToken', newRefresh, { expires: 7 }); // Store the new access token
+  
+      console.log('Access token refreshed!');
+      return newAccess;
+  
+    } catch (error) {
+      console.error('Failed to refresh token:', error.response?.data || error.message);
+      // localStorage.clear();
+      // window.location.href = '/login';
+  
+      return null;
+    }
+  };
 
-let StoreData = [];
+  //==========================================================================================
+
+let cartData = [];
+const aToken = await refreshAccessToken();
 try {
-  const response = await axios.get("http://127.0.0.1:8000/products/");
-  console.log("Products", response.data);
-  for (let i = 0; i < response.data.length; i++) {
-    StoreData.push({
-      productID: response.data[i].id,
-      frontImg: response.data[i].image,
-      productName: response.data[i].name,
-      productPrice: response.data[i].price,
-      productReviews: "9k+ reviews",
-      productStock: response.data[i].stock,
-      productDescription: response.data[i].description,
-      Category: response.data[i].category,
-      Franchise: response.data[i].franchise,
-      productAvailable: response.data[i].is_available,
-    });
-  }
+  const response = await axios.get("http://127.0.0.1:8000/cart/", {
+    headers: {
+      Authorization: `Bearer ${aToken}`,
+    },
+  });
+  cartData = response.data;
+  cartData[0].items.forEach((item) => {
+    const product = StoreData.find((product) => product.productID === item.product);
+    if (product) {
+      item.frontImg = product.frontImg;
+      item.productName = product.productName;
+      item.franchise = product.Franchise.name+", " + product.Franchise.location;
+      item.productReviews = product.productReviews;
+    }
+  });
 } catch (error) {
   console.error("Failed:", error.response ? error.response.data : error.message);
 }
-console.log("StoreData", StoreData);
+console.log("cartData", cartData);
 
-export default StoreData;
+export default cartData;

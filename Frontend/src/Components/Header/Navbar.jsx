@@ -23,6 +23,8 @@ import { FaPinterest } from "react-icons/fa";
 
 import Badge from "@mui/material/Badge";
 
+import cartData from "../../Data/CartData";
+
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
 
@@ -87,7 +89,7 @@ const Navbar = () => {
           </Link>
           <Link to="/cart" onClick={scrollToTop}>
             <Badge
-              badgeContent={cart.items.length === 0 ? "0" : cart.items.length}
+              badgeContent={cartData[0].items.length === 0 ? "0" : cartData[0].items.length}
               color="primary"
               anchorOrigin={{
                 vertical: "bottom",
