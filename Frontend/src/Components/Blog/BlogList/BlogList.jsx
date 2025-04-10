@@ -18,18 +18,18 @@ const BlogList = () => {
       <div className="blogListSection">
         <div className="blogListHeaderContainer">
           <div className="blogListHeader">
-            <h2>The Blog</h2>
-            <div className="blogListHeaderCategories">
+            <h2>UNDER CONSTRUCTIONS !</h2>
+            {/* <div className="blogListHeaderCategories">
               <p>ALL</p>
               <p>COMPANY</p>
               <p className="activeCategory">FASHION</p>
               <p>STYLE</p>
               <p>TRENDS</p>
               <p>BEAUTY</p>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="blogPostListContainer">
+        {/* <div className="blogPostListContainer">
           {BlogData.map((blogPost) => (
             <div className="blogPost">
               <div className="blogPostThumb">
@@ -63,7 +63,7 @@ const BlogList = () => {
         </div>
         <p className="blogListShowMore" onClick={scrollToTop}>
           Show More
-        </p>
+        </p> */}
       </div>
     </>
   );

@@ -17,7 +17,7 @@ const CollectionBox = () => {
         <div className="collectionLeft">
           <p className="col-p">Divine</p>
           <h3 className="col-h3">
-            <span>Palkova</span> Collection
+            <span>Halwa</span> Collection
           </h3>
           <div className="col-link">
             <Link to="/shop" onClick={scrollToTop}>
@@ -50,12 +50,10 @@ const CollectionBox = () => {
               </div>
             </div>
             <div className="box2">
+              <p className="col-p">Nutrient</p>
               <h3 className="col-h3">
                 <span>Healty</span> Snacks
               </h3>
-              <p className="col-p">
-                The snacks that are good for your health and taste buds.
-              </p>
               <div className="col-link">
                 <Link to="/shop" onClick={scrollToTop}>
                   <h5>Shop Now</h5>

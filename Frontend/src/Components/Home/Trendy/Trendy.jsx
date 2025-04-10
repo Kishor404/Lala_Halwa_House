@@ -149,7 +149,7 @@ const Trendy = () => {
             {/* Tab 1 */}
             {activeTab === "tab1" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 5).map((product) => (
+                {StoreData.slice(0, 4).map((product) => (
                   <div className="trendyProductContainer" key={product.id}>
                     <div className="trendyProductImages">
                       <Link to="/Product" state={{ product }} onClick={scrollToTop}>
@@ -213,7 +213,7 @@ const Trendy = () => {
             {/* Tab 2 */}
             {activeTab === "tab2" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 5)
+                {StoreData.slice(0, 4)
                   .reverse()
                   .map((product) => (
                     <div className="trendyProductContainer" key={product.id}>
@@ -281,7 +281,7 @@ const Trendy = () => {
             {/* Tab 3 */}
             {activeTab === "tab3" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 5)
+                {StoreData.slice(0, 4)
                   .sort(sortByReviews)
                   .map((product) => (
                     <div className="trendyProductContainer" key={product.id}>
@@ -349,7 +349,7 @@ const Trendy = () => {
             {/* Tab 4 */}
             {activeTab === "tab4" && (
               <div className="trendyMainContainer">
-                {StoreData.slice(0, 5)
+                {StoreData.slice(0, 4)
                   .sort(sortByPrice)
                   .map((product) => (
                     <div className="trendyProductContainer" key={product.id}>

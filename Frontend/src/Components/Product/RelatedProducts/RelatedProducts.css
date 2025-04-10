@@ -68,7 +68,7 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  object-fit: contain;
+  object-fit: cover;
   transition: opacity 0.3s linear;
 }
 

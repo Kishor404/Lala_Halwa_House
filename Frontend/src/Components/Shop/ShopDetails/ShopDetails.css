@@ -122,7 +122,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  object-fit: contain;
+  object-fit: cover;
   transition: opacity 0.3s linear;
 }
 

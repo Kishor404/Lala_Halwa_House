@@ -82,8 +82,8 @@
 
 .trendyMainContainer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px;
 }
 
 .trendyProductContainer {
@@ -107,7 +107,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  object-fit: contain;
+  object-fit: cover;
   transition: opacity 0.3s linear;
 }
 
@@ -232,9 +232,14 @@
   display: none;
 }
 
+
 @media screen and (max-width: 1210px) {
   .trendyProducts {
     padding: 0 60px;
+  }
+
+  .trendyTabs,.trendyTabContent {
+    width: 100%;
   }
 
   .trendyProducts h2 {
@@ -260,7 +265,7 @@
     border-radius: 50%;
     padding: 5px;
     z-index: 8;
-    color: gray;
+    color: rgb(255, 255, 255);
   }
 }
 
