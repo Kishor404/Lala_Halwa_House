@@ -24,9 +24,11 @@ import axios from "axios";
 //   },
 // ];
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 let StoreData = [];
 try {
-  const response = await axios.get("http://127.0.0.1:8000/products/");
+  const response = await axios.get(API_URL+"/products/");
   console.log("Products", response.data);
   for (let i = 0; i < response.data.length; i++) {
     StoreData.push({

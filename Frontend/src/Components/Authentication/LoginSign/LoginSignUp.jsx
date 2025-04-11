@@ -30,7 +30,7 @@ const LoginSignUp = () => {
     e.preventDefault();
     console.log("Login Data:", loginData);
     try {
-      const response = await axios.post("http://127.0.0.1:8000/log/login/", loginData);
+      const response = await axios.post("http://127.0.0.1:8000/api/log/login/", loginData);
       console.log("Login Successful:", response.data);
   
       // Store token in localStorage
@@ -75,7 +75,7 @@ const LoginSignUp = () => {
       const data={phone:registerData.phone, password: registerData.password, address: {address1: registerData.address1, landmark: registerData.landmark, city: registerData.city, state: registerData.state, pinCode: registerData.pinCode, country: registerData.country}}
       console.log("Register Data:", data);
       try {
-        const response = await axios.post("http://127.0.0.1:8000/log/register/", data);
+        const response = await axios.post("http://127.0.0.1:8000/api/log/register/", data);
         console.log("Register Successful:", response.data);
     
         // Store token in localStorage

@@ -44,7 +44,7 @@ const RelatedProducts = () => {
         throw new Error('No refresh token found');
       }
   
-      const response = await axios.post('http://localhost:8000/log/token/refresh/', {
+      const response = await axios.post('http://localhost:8000/api/log/token/refresh/', {
         refresh: refresh,
       });
   
@@ -75,7 +75,7 @@ const RelatedProducts = () => {
     const cart = Cookies.get('cart');
     const aToken = await refreshAccessToken();
     try {
-      const response = await axios.post('http://localhost:8000/cart/'+cart+'/add_item/', data, {
+      const response = await axios.post('http://localhost:8000/api/cart/'+cart+'/add_item/', data, {
         headers: {
           Authorization: `Bearer ${aToken}`,
         },
