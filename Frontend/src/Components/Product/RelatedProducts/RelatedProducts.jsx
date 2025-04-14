@@ -17,6 +17,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import toast from "react-hot-toast";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const RelatedProducts = () => {
   const [wishList, setWishList] = useState({});
 
@@ -44,7 +46,7 @@ const RelatedProducts = () => {
         throw new Error('No refresh token found');
       }
   
-      const response = await axios.post('http://localhost:8000/api/log/token/refresh/', {
+      const response = await axios.post(API_URL+'/log/token/refresh/', {
         refresh: refresh,
       });
   
@@ -75,7 +77,7 @@ const RelatedProducts = () => {
     const cart = Cookies.get('cart');
     const aToken = await refreshAccessToken();
     try {
-      const response = await axios.post('http://localhost:8000/api/cart/'+cart+'/add_item/', data, {
+      const response = await axios.post(API_URL+'/cart/'+cart+'/add_item/', data, {
         headers: {
           Authorization: `Bearer ${aToken}`,
         },

@@ -40,9 +40,18 @@ class CartViewSet(viewsets.ModelViewSet):
     def remove_item(self, request, pk=None):
         cart = self.get_object()
         product_id = request.data.get('product')
+        quantity = int(request.data.get('quantity', 1))
 
         item = CartItem.objects.filter(cart=cart, product_id=product_id).first()
         if item:
-            item.delete()
-            return Response({'success': True, 'message': 'Item removed.'})
+            if quantity == 0:
+                item.delete()
+                return Response({'success': True, 'message': 'Item removed.'})
+            elif item.quantity > quantity:
+                item.quantity -= quantity
+                item.save()
+                return Response({'success': True, 'message': 'Quantity reduced.', 'item': CartItemSerializer(item).data})
+            else:
+                item.delete()
+                return Response({'success': True, 'message': 'Item removed.'})
         return Response({'success': False, 'message': 'Item not found.'}, status=404)

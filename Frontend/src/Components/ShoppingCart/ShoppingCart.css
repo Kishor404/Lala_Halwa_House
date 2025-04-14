@@ -133,11 +133,11 @@
 }
 
 .shoppingBagTableImg img {
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
-  padding: 10px;
+  border-radius: 10px;
 }
 
 .shoppingBagTableProductDetail {
@@ -168,7 +168,7 @@
   align-items: center;
   border: 2px solid #e0e0e0;
   padding: 0 10px;
-  width: 70px;
+  width: 90px;
 }
 
 .ShoppingBagTableQuantity button {
@@ -178,12 +178,15 @@
   font-size: 16px;
 }
 
-.ShoppingBagTableQuantity input {
-  width: 40px;
+.ShoppingBagTableQuantity p {
+  width: 60px;
   height: 40px;
   text-align: center;
   border: none;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .shoppingCartEmpty {
@@ -924,7 +927,7 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    width: 70px;
+    width: 90px;
   }
 
   .shoppingBagTableMobileQuantity button {
@@ -934,12 +937,15 @@
     font-size: 16px;
   }
 
-  .shoppingBagTableMobileQuantity input {
-    width: 20px;
+  .shoppingBagTableMobileQuantity p {
+    width: 50px;
     height: 20px;
     text-align: center;
     border: none;
     outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .shoppingBagTableMobileItemsDetailTotal {

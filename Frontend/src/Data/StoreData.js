@@ -28,6 +28,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 let StoreData = [];
 try {
+  console.log("API_URL", API_URL+"/api/products/");
   const response = await axios.get(API_URL+"/products/");
   console.log("Products", response.data);
   for (let i = 0; i < response.data.length; i++) {

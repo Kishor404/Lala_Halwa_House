@@ -61,34 +61,18 @@ try {
 
   // Handle error here, e.g., show a message to the user
 
-  cartData=[{"id": 5,"user": 6,"created_at": "2025-04-09T01:02:41.013212Z","items": [
+  cartData=[{"id": 1,"user": 1,"created_at": "2025-04-09T01:02:41.013212Z","items": [
         {
-            "id": 7,
-            "product": 10,
-            "product_name": "Karuppatti Halwa",
-            "quantity": 2,
-            "price": "140.00",
-            "total_price": 280.0
-        },
-        {
-            "id": 8,
-            "product": 12,
-            "product_name": "Milk Halwa",
-            "quantity": 2,
-            "price": "120.00",
-            "total_price": 240.0
-        },
-        {
-            "id": 9,
-            "product": 9,
-            "product_name": "Cashew Halwa",
+            "id": 1,
+            "product": 1,
+            "product_name": "Error",
             "quantity": 1,
-            "price": "100.00",
-            "total_price": 100.0
+            "price": "0",
+            "total_price": 0
         }
     ],
-    "total_items": 5,
-    "total_price": 620.0
+    "total_items": 1,
+    "total_price": 0
 }]
 
 

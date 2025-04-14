@@ -3,9 +3,13 @@ import "./LoginSignUp.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const LoginSignUp = () => {
   const [activeTab, setActiveTab] = useState("tabButton1");
+  const navigate = useNavigate();
 
   const handleTab = (tab) => {
     setActiveTab(tab);
@@ -30,7 +34,7 @@ const LoginSignUp = () => {
     e.preventDefault();
     console.log("Login Data:", loginData);
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/log/login/", loginData);
+      const response = await axios.post(API_URL+"/log/login/", loginData);
       console.log("Login Successful:", response.data);
   
       // Store token in localStorage
@@ -39,6 +43,15 @@ const LoginSignUp = () => {
       Cookies.set("userid", response.data.user.id, { expires: 7 });
       Cookies.set("username", response.data.user.name, { expires: 7 });
       Cookies.set("userphone", response.data.user.phone, { expires: 7 });
+      Cookies.set("userAddressCity", response.data.user.address.city, { expires: 7 });
+      Cookies.set("userAddress1", response.data.user.address.address1, { expires: 7 });
+      Cookies.set("userAddressCountry", response.data.user.address.country, { expires: 7 });
+      Cookies.set("userAddressLandmark", response.data.user.address.landmark, { expires: 7 });
+      Cookies.set("userAddressPincode", response.data.user.address.pinCode, { expires: 7 });
+      Cookies.set("userAddressState", response.data.user.address.state, { expires: 7 });
+      Cookies.set("login","1",{ expires: 7 })
+
+      navigate("/Account");
       
     } catch (error) {
       console.error("Login Failed:", error.response ? error.response.data : error.message);
@@ -75,11 +88,16 @@ const LoginSignUp = () => {
       const data={phone:registerData.phone, password: registerData.password, address: {address1: registerData.address1, landmark: registerData.landmark, city: registerData.city, state: registerData.state, pinCode: registerData.pinCode, country: registerData.country}}
       console.log("Register Data:", data);
       try {
-        const response = await axios.post("http://127.0.0.1:8000/api/log/register/", data);
+        const response = await axios.post(API_URL+"/log/register/", data);
         console.log("Register Successful:", response.data);
     
         // Store token in localStorage
-        localStorage.setItem("token", response.data.token);
+        Cookies.set("rToken", response.data.refresh);
+        Cookies.set("cart", response.data.user.cart, { expires: 7 });
+        Cookies.set("userid", response.data.user.id, { expires: 7 });
+        Cookies.set("username", response.data.user.name, { expires: 7 });
+        Cookies.set("userphone", response.data.user.phone, { expires: 7 });
+        Cookies.set("login","1",{ expires: 7 })
       } catch (error) {
         console.error("Login Failed:", error.response ? error.response.data : error.message);
       }

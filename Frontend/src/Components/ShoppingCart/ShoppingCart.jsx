@@ -14,24 +14,174 @@ import success from "../../Assets/success.png";
 
 import cartData from "../../Data/CartData";
 
+import toast from "react-hot-toast";
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
+const API_URL = process.env.REACT_APP_API_URL;
+
 const ShoppingCart = () => {
   const dispatch = useDispatch();
 
   const [activeTab, setActiveTab] = useState("cartTab1");
   const [payments, setPayments] = useState(false);
 
+  // =========================== REFRESH TOKEN ==============================
+  
+    const refreshAccessToken = async () => {
+      try {
+        const refresh = Cookies.get('rToken');
+    
+        if (!refresh) {
+          throw new Error('No refresh token found');
+        }
+    
+        const response = await axios.post(API_URL+'/log/token/refresh/', {
+          refresh: refresh,
+        });
+    
+        const newAccess = response.data.access;
+        const newRefresh = response.data.refresh;
+        Cookies.set('access', newAccess, { expires: 7 }); // Store the new access token
+        Cookies.set('rToken', newRefresh, { expires: 7 }); // Store the new access token
+    
+        console.log('Access token refreshed!');
+        return newAccess;
+    
+      } catch (error) {
+        console.error('Failed to refresh token:', error.response?.data || error.message);
+        // localStorage.clear();
+        // window.location.href = '/login';
+    
+        return null;
+      }
+    };
+  
+  //==========================================================================================
+
+  //========================= REMOVE FROM CART ====================================================
+
+  const handleRemoveFromCart = async(product) => {
+    console.log(product)
+    const data={"product":product.product, "quantity":1};
+    const cart = Cookies.get('cart');
+    const aToken = await refreshAccessToken();
+    try {
+      const response = await axios.post(API_URL+'/cart/'+cart+'/remove_item/', data, {
+        headers: {
+          Authorization: `Bearer ${aToken}`,
+        },
+      });
+
+      console.log('Remove From Cart Success:', response.data);
+      toast.success(`Removed From cart!`, {
+        duration: 2000,
+        style: {backgroundColor: "#07bc0c",color: "white",},
+        iconTheme: {primary: "#fff",secondary: "#07bc0c",},
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+
+    } catch (error) {
+      console.error('Remove From Cart Failed:', error.response?.data || error.message);
+      toast.error("Error Occur! Try Again After Sometime", {
+        duration: 2000,
+        style: {backgroundColor: "#ff4b4b",color: "white",},
+        iconTheme: {primary: "#fff",secondary: "#ff4b4b",},
+      });
+    }
+  };
+
+  //========================= REMOVE PRODUCT FROM CART ====================================================
+
+  const handleRemoveProductFromCart = async(product) => {
+    console.log(product)
+    const data={"product":product.product, "quantity":0};
+    const cart = Cookies.get('cart');
+    const aToken = await refreshAccessToken();
+    try {
+      const response = await axios.post(API_URL+'/cart/'+cart+'/remove_item/', data, {
+        headers: {
+          Authorization: `Bearer ${aToken}`,
+        },
+      });
+
+      console.log('Remove From Cart Success:', response.data);
+      toast.success(`Removed From cart!`, {
+        duration: 2000,
+        style: {backgroundColor: "#07bc0c",color: "white",},
+        iconTheme: {primary: "#fff",secondary: "#07bc0c",},
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+
+    } catch (error) {
+      console.error('Remove From Cart Failed:', error.response?.data || error.message);
+      toast.error("Error Occur! Try Again After Sometime", {
+        duration: 2000,
+        style: {backgroundColor: "#ff4b4b",color: "white",},
+        iconTheme: {primary: "#fff",secondary: "#ff4b4b",},
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    }
+  };
+
+    //========================= ADD TO CART ====================================================
+  
+    const handleAddToCart = async(product) => {
+  
+      const data={"product":product.product, "quantity":1};
+      const cart = Cookies.get('cart');
+      const aToken = await refreshAccessToken();
+      try {
+        const response = await axios.post(API_URL+'/cart/'+cart+'/add_item/', data, {
+          headers: {
+            Authorization: `Bearer ${aToken}`,
+          },
+        });
+  
+        console.log('Add To Cart Success:', response.data);
+        toast.success(`Added to cart!`, {
+          duration: 2000,
+          style: {backgroundColor: "#07bc0c",color: "white",},
+          iconTheme: {primary: "#fff",secondary: "#07bc0c",},
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+  
+      } catch (error) {
+        console.error('Add To Cart Failed:', error.response?.data || error.message);
+        toast.error("Error Occur! Try Again After Sometime", {
+          duration: 2000,
+          style: {backgroundColor: "#ff4b4b",color: "white",},
+          iconTheme: {primary: "#fff",secondary: "#ff4b4b",},
+        });
+      }
+    };
+  
+    //==========================================================================================
+
+    //============================== CALC QUANTITY ====================================
+
+    const calcQuantity = (iQuantity) => {
+      const iQ= iQuantity * 50;
+      if (iQ < 1000) {
+        return iQ + " g";
+      } else {
+        return (iQ / 1000) + " kg";
+      }
+    };
+
   const handleTabClick = (tab) => {
     if (tab === "cartTab1" || cartData[0].items.length > 0) {
       setActiveTab(tab);
     }
   };
-
-  const handleQuantityChange = (productId, quantity) => {
-    if (quantity >= 1 && quantity <= 20) {
-      dispatch(updateQuantity({ productID: productId, quantity: quantity }));
-    }
-  };
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -158,38 +308,21 @@ const ShoppingCart = () => {
                               data-label="Price"
                               style={{ textAlign: "start" }}
                             >
-                              ${item.price}
+                              ₹{item.price}
                             </td>
                             <td data-label="Quantity">
                               <div className="ShoppingBagTableQuantity">
                                 <button
                                   onClick={() =>
-                                    handleQuantityChange(
-                                      item.productID,
-                                      item.quantity - 1
-                                    )
+                                    handleRemoveFromCart(item)
                                   }
                                 >
                                   -
                                 </button>
-                                <input
-                                  type="text"
-                                  min="1"
-                                  max="20"
-                                  value={item.quantity}
-                                  onChange={(e) =>
-                                    handleQuantityChange(
-                                      item.productID,
-                                      parseInt(e.target.value)
-                                    )
-                                  }
-                                />
+                                <p>{calcQuantity(item.quantity)}</p>
                                 <button
                                   onClick={() =>
-                                    handleQuantityChange(
-                                      item.productID,
-                                      item.quantity + 1
-                                    )
+                                    handleAddToCart(item)
                                   }
                                 >
                                   +
@@ -204,13 +337,13 @@ const ShoppingCart = () => {
                                   fontWeight: "500",
                                 }}
                               >
-                                ${item.total_price}
+                                ₹{item.total_price}
                               </p>
                             </td>
                             <td data-label="">
                               <MdOutlineClose
                                 onClick={() =>
-                                  dispatch(removeFromCart(item.productID))
+                                  handleRemoveProductFromCart(item)
                                 }
                               />
                             </td>
@@ -254,12 +387,12 @@ const ShoppingCart = () => {
                               </button>
                             </form>
                             <button
-                              onClick={(e) => {
-                                e.preventDefault();
+                              onClick={() => {
+                                window.location.reload();
                               }}
                               className="shopCartFooterbutton"
                             >
-                              Update Cart
+                              Refresh Cart
                             </button>
                           </div>
                         )}
@@ -288,48 +421,29 @@ const ShoppingCart = () => {
                                   <p>{item.productReviews}</p>
                                   <div className="shoppingBagTableMobileQuantity">
                                     <button
-                                      onClick={() =>
-                                        handleQuantityChange(
-                                          item.productID,
-                                          item.quantity - 1
-                                        )
+                                      onClick={() => handleRemoveFromCart(item)
                                       }
                                     >
                                       -
                                     </button>
-                                    <input
-                                      type="text"
-                                      min="1"
-                                      max="20"
-                                      value={item.quantity}
-                                      onChange={(e) =>
-                                        handleQuantityChange(
-                                          item.productID,
-                                          parseInt(e.target.value)
-                                        )
-                                      }
-                                    />
+                                    <p>{calcQuantity(item.quantity)}</p>
                                     <button
                                       onClick={() =>
-                                        handleQuantityChange(
-                                          item.productID,
-                                          item.quantity + 1
-                                        )
+                                        handleAddToCart(item)
                                       }
                                     >
                                       +
                                     </button>
                                   </div>
-                                  <span>${item.productPrice}</span>
+                                  <span>₹{item.price}</span>
                                 </div>
                                 <div className="shoppingBagTableMobileItemsDetailTotal">
                                   <MdOutlineClose
                                     size={20}
-                                    onClick={() =>
-                                      dispatch(removeFromCart(item.productID))
+                                    onClick={() => handleRemoveProductFromCart(item)
                                     }
                                   />
-                                  <p>${item.quantity * item.productPrice}</p>
+                                  <p>₹{item.total_price}</p>
                                 </div>
                               </div>
                             </div>
@@ -351,12 +465,12 @@ const ShoppingCart = () => {
                               </button>
                             </form>
                             <button
-                              onClick={(e) => {
-                                e.preventDefault();
+                              onClick={() => {
+                                window.location.reload();
                               }}
                               className="shopCartFooterbutton"
                             >
-                              Update Cart
+                              Refresh Cart
                             </button>
                           </div>
                         </div>
@@ -377,13 +491,13 @@ const ShoppingCart = () => {
                     <tbody>
                       <tr>
                         <th>Subtotal</th>
-                        <td>${cartData[0].total_price.toFixed(2)}</td>
+                        <td>₹{cartData[0].total_price.toFixed(2)}</td>
                       </tr>
                       <tr>
                         <th>Shipping</th>
                         <td>
                           <div className="shoppingBagTotalTableCheck">
-                            <p>${(cartData[0].total_price === 0 ? 0 : 100).toFixed(2)}</p>
+                            <p>₹{(cartData[0].total_price === 0 ? 0 : 100).toFixed(2)}</p>
                             <p>Shipping to Al..</p>
                             <p
                               onClick={scrollToTop}
@@ -398,12 +512,12 @@ const ShoppingCart = () => {
                       </tr>
                       <tr>
                         <th>VAT</th>
-                        <td>${(cartData[0].total_price === 0 ? 0 : cartData[0].total_price*13/100).toFixed(2)}</td>
+                        <td>₹{(cartData[0].total_price === 0 ? 0 : cartData[0].total_price*13/100).toFixed(2)}</td>
                       </tr>
                       <tr>
                         <th>Total</th>
                         <td>
-                          ${(cartData[0].total_price === 0 ? 0 : cartData[0].total_price+(cartData[0].total_price*13/100)+100).toFixed(2)}
+                          ₹{(cartData[0].total_price === 0 ? 0 : cartData[0].total_price+(cartData[0].total_price*13/100)+100).toFixed(2)}
                         </td>
                       </tr>
                     </tbody>
@@ -429,12 +543,14 @@ const ShoppingCart = () => {
                   <div className="checkoutDetailsForm">
                     <form>
                       <div className="checkoutDetailsFormRow">
-                        <input type="text" placeholder="First Name" />
-                        <input type="text" placeholder="Last Name" />
+                        <input type="text" placeholder="Name" />
                       </div>
                       <input
                         type="text"
-                        placeholder="Company Name (optional)"
+                        placeholder="Address"
+                      />
+                      <input type="text"
+                        placeholder="Country"
                       />
                       <select name="country" id="country">
                         <option value="Country / Region" selected disabled>
@@ -487,7 +603,7 @@ const ShoppingCart = () => {
                               <td>
                                 {items.product_name} x {items.quantity}
                               </td>
-                              <td>${items.total_price}</td>
+                              <td>₹{items.total_price}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -498,20 +614,20 @@ const ShoppingCart = () => {
                         <tbody>
                           <tr>
                             <th>Subtotal</th>
-                            <td>${cartData[0].total_price.toFixed(2)}</td>
+                            <td>₹{cartData[0].total_price.toFixed(2)}</td>
                           </tr>
                           <tr>
                             <th>Shipping</th>
-                            <td>$100</td>
+                            <td>₹100</td>
                           </tr>
                           <tr>
                             <th>VAT</th>
-                            <td>${cartData[0].total_price*13/100}</td>
+                            <td>₹{cartData[0].total_price*13/100}</td>
                           </tr>
                           <tr>
                             <th>Total</th>
                             <td>
-                              $
+                              ₹
                               {(cartData[0].total_price === 0 ? 0 : cartData[0].total_price + (cartData[0].total_price*13/100) + 100).toFixed(
                                 2
                               )}
@@ -636,7 +752,7 @@ const ShoppingCart = () => {
                     </div>
                     <div className="orderInfoItem">
                       <p>Total</p>
-                      <h4>${(cartData[0].total_price === 0 ? 0 : cartData[0].total_price + (cartData[0].total_price*13/100) + 100).toFixed(2)}</h4>
+                      <h4>₹{(cartData[0].total_price === 0 ? 0 : cartData[0].total_price + (cartData[0].total_price*13/100) + 100).toFixed(2)}</h4>
                     </div>
                     <div className="orderInfoItem">
                       <p>Payment Method</p>
@@ -659,7 +775,7 @@ const ShoppingCart = () => {
                               <td>
                                 {items.product_name} x {items.quantity}
                               </td>
-                              <td>${items.total_price}</td>
+                              <td>₹{items.total_price}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -670,20 +786,20 @@ const ShoppingCart = () => {
                         <tbody>
                           <tr>
                             <th>Subtotal</th>
-                            <td>${cartData[0].total_price.toFixed(2)}</td>
+                            <td>₹{cartData[0].total_price.toFixed(2)}</td>
                           </tr>
                           <tr>
                             <th>Shipping</th>
-                            <td>$100</td>
+                            <td>₹100</td>
                           </tr>
                           <tr>
                             <th>VAT</th>
-                            <td>${(cartData[0].total_price*13/100).toFixed(2)}</td>
+                            <td>₹{(cartData[0].total_price*13/100).toFixed(2)}</td>
                           </tr>
                           <tr>
                             <th>Total</th>
                             <td>
-                              $
+                              ₹
                               {(cartData[0].total_price === 0 ? 0 : cartData[0].total_price + (cartData[0].total_price*13/100) + 100).toFixed(2)}
                             </td>
                           </tr>

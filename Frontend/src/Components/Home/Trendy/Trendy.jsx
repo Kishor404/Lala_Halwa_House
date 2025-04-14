@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Trendy = () => {
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("tab1");
@@ -58,7 +60,7 @@ const Trendy = () => {
         throw new Error('No refresh token found');
       }
   
-      const response = await axios.post('http://localhost:8000/api/log/token/refresh/', {
+      const response = await axios.post(API_URL+'/log/token/refresh/', {
         refresh: refresh,
       });
   
@@ -89,7 +91,7 @@ const Trendy = () => {
     const cart = Cookies.get('cart');
     const aToken = await refreshAccessToken();
     try {
-      const response = await axios.post('http://localhost:8000/api/cart/'+cart+'/add_item/', data, {
+      const response = await axios.post(API_URL+'/cart/'+cart+'/add_item/', data, {
         headers: {
           Authorization: `Bearer ${aToken}`,
         },
@@ -101,6 +103,7 @@ const Trendy = () => {
         style: {backgroundColor: "#07bc0c",color: "white",},
         iconTheme: {primary: "#fff",secondary: "#07bc0c",},
       });
+      
 
     } catch (error) {
       console.error('Add To Cart Failed:', error.response?.data || error.message);
@@ -111,6 +114,8 @@ const Trendy = () => {
       });
     }
   };
+
+  //==========================================================================================
 
   return (
     <>
