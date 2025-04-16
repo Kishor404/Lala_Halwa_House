@@ -22,125 +22,58 @@ const AboutPage = () => {
   return (
     <>
       <div className="aboutSection">
-        <h2>About "Lala's Halwa House"</h2>
-        <img src={about1} alt="" className="about-main-img" />
+        <h2>About Us</h2>
+        <img src={about1} alt="Lala Halwa" className="about-main-img" />
         <div className="aboutContent">
-          <h3>Our Story</h3>
-          <h4>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
-          </h4>
+          <h3>Welcome to LALA's Sweet Family</h3>
+          
           <p>
-            Saw wherein fruitful good days image them, midst, waters upon, saw.
-            Seas lights seasons. Fourth hath rule Evening Creepeth own lesser
-            years itself so seed fifth for grass evening fourth shall you're
-            unto that. Had. Female replenish for yielding so saw all one to
-            yielding grass you'll air sea it, open waters subdue, hath. Brought
-            second Made. Be. Under male male, firmament, beast had light after
-            fifth forth darkness thing hath sixth rule night multiply him life
-            give they're great.
+          <h4>
+            Every bite tells a story of our traditional fame.
+          </h4>
+            We are proud to say that we represent the fourth generation carrying forward our quality and legacy into the fifth generation. The term "LALA" is often associated with Tirunelveli Halwa, likely
+            stemming from the Rajputs of Chokkampatti who originally prepared it. Our beloved shop, known as "LALA KADAI", has stood as a symbol of taste and trust.
+            We are the Eternal Roots of LALA's Halwa Family. Our journey is not just about sweets; it's about preserving a heritage, a tradition that has been passed down through generations. Every recipe we create is a testament to the love and dedication of our ancestors.
+            Over the years, we have expanded our offerings to include a wide variety of sweets and savories, each crafted with the same passion and commitment to quality. Our customers are not just patrons; they are part of our extended family, sharing in the joy and nostalgia that our products bring. From festive occasions to everyday indulgences, LALA's Halwa Karan has been a part of countless cherished memories. We believe in creating not just sweets, but experiences that linger in the hearts of our customers forever.
           </p>
+
           <div className="content1">
             <div className="contentBox">
-              <h5>Our Mission</h5>
-              <p>
-                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
-              </p>
+            <h5>Our Mission</h5>
+            <p>
+              To preserve the authentic taste of traditional halwa and sweets while embracing innovation for future generations. We aim to bring joy and happiness to every customer by delivering products that are crafted with care and precision.
+              At Lala Halwa Shop, we are committed to upholding the rich legacy of Indian confectionery. Our mission goes beyond just making sweets — we strive to create memorable experiences with every bite. By combining age-old recipes with modern techniques, we ensure that our offerings remain relevant, delightful, and of the highest quality.
+              We believe in sustainability, purity, and customer satisfaction. From sourcing the finest ingredients to maintaining hygienic production practices, our goal is to consistently exceed expectations. Whether it's a festive celebration, a family gathering, or a simple craving, we want to be a part of your sweetest moments.
+            </p>
+
             </div>
             <div className="contentBox">
-              <h5>Our Vision</h5>
-              <p>
-                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
-              </p>
+            <h5>Our Vision</h5>
+            <p>
+              To be a global symbol of Tirunelveli Halwa and Indian sweet craftsmanship, delivering love in every bite. We envision a future where our brand becomes synonymous with quality, trust, and the rich cultural heritage of Indian sweets.
+              Our vision is to take the legacy of Tirunelveli Halwa beyond regional boundaries and establish a presence across the globe. We aim to become the go-to destination for authentic Indian sweets, where tradition meets taste in its purest form.
+              As we grow, we aspire to inspire — by setting new benchmarks in the sweet industry, encouraging entrepreneurship through franchising, and nurturing local artisans who are the heart of our success. Every step we take is guided by our desire to celebrate and share the unique flavors of India with the world.
+            </p>
+
             </div>
           </div>
+
           <div className="content2">
             <div className="imgContent">
-              <img src={about2} alt="" />
+              <img src={about2} alt="Traditional Making" />
             </div>
             <div className="textContent">
-              <h5>The Company</h5>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-                sapien dignissim a elementum. Sociis metus, hendrerit mauris id
-                in. Quis sit sit ultrices tincidunt euismod luctus diam. Turpis
-                sodales orci etiam phasellus lacus id leo. Amet turpis nunc,
-                nulla massa est viverra interdum. Praesent auctor nulla morbi
-                non posuere mattis. Arcu eu id maecenas cras.
-              </p>
+            <h5>The Lala's Halwa Karan</h5>
+            <p>
+              Rooted in legacy and powered by passion, LALA's Halwa Karan has been a cornerstone of tradition, delighting generations with unmatched flavor and quality. What began as a humble sweet shop has now grown into a trusted name that represents authenticity, craftsmanship, and heartfelt service.
+              Our journey is built on strong family values, time-honored recipes, and an unwavering dedication to delivering excellence. Over the years, we have preserved the essence of traditional sweet-making while embracing innovation to cater to the tastes of modern consumers.
+              From sourcing the finest ingredients to employing skilled artisans who follow age-old techniques, every step in our process is guided by precision, care, and a commitment to perfection. We believe that sweets are more than just food—they are a part of cherished memories, joyful celebrations, and everyday happiness.
+              As we expand through franchising and online platforms, our goal remains the same: to share the magic of Tirunelveli Halwa and other beloved Indian sweets with the world, while staying true to the legacy that defines us. At LALA’s Halwa Karan, we don’t just make sweets — we craft timeless experiences.
+            </p>
+
             </div>
           </div>
         </div>
-      </div>
-      <Services />
-      <div className="companyPartners">
-        <h5>Company Partners</h5>
-        <Swiper
-          slidesPerView={1}
-          loop={true}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 5,
-            },
-
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-
-            1024: {
-              slidesPerView: 5,
-              spaceBetween: 50,
-            },
-          }}
-          spaceBetween={10}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          modules={[Autoplay]}
-        >
-          <SwiperSlide>
-            <div className="aboutBrands">
-              <img src={brand1} alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="aboutBrands">
-              <img src={brand2} alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="aboutBrands">
-              <img src={brand3} alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="aboutBrands">
-              <img src={brand4} alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="aboutBrands">
-              <img src={brand5} alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="aboutBrands">
-              <img src={brand6} alt="" />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="aboutBrands">
-              <img src={brand7} alt="" />
-            </div>
-          </SwiperSlide>
-        </Swiper>
       </div>
     </>
   );
