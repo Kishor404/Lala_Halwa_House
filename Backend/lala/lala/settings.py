@@ -33,6 +33,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'products',
     'order',
     'cart',
+    'whishlist',
 ]
 
 MIDDLEWARE = [

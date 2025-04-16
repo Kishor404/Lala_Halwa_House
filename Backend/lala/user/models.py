@@ -31,6 +31,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(_('phone'), max_length=30, unique=True)
     name = models.CharField(_('name'), max_length=30, blank=True)
     cart = models.CharField(_('cart'), max_length=255, blank=True, null=True)
+    wishlist = models.CharField(_('wishlist'), max_length=255, blank=True, null=True)
     address = models.JSONField(_('address'), default=dict, blank=True)
     role = models.CharField(
         max_length=10,

@@ -1,0 +1,236 @@
+.whishlist-trendyMainContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 40px;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+.whishlist-trendyProductContainer {
+  position: relative;
+}
+
+.whishlist-trendyProductImages {
+  position: relative;
+  width: 258px;
+  height: 320px;
+  overflow: hidden;
+  -webkit-transition: all 0.2s cubic-bezier(0.99, 0.99, 0, 0.61);
+  transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+}
+
+.whishlist-trendyProductImages img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  transition: opacity 0.3s linear;
+}
+
+.whishlist-trendyProductImages .whishlist-trendyProduct_back {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+
+.whishlist-trendyProductContainer:hover .whishlist-trendyProduct_back {
+  opacity: 1;
+}
+
+.whishlist-trendyProductImages .whishlist-trendyProduct_front {
+  z-index: 2;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+.whishlist-trendyProductContainer:hover .whishlist-trendyProduct_front {
+  opacity: 0;
+}
+
+.whishlist-trendyProductContainer h4 {
+  position: relative;
+  top: 320px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(253, 253, 253);
+  transition: all 0.2s cubic-bezier(0.99, 0.99, 0, 0.61);
+  margin: 0 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.whishlist-trendyProductContainer:hover h4 {
+  top: 270px;
+}
+
+.whishlist-trendyProductInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.whishlist-trendyProductCategoryWishlist {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.whishlist-trendyProductCategoryWishlist p {
+  color: #767676;
+  font-size: 14px;
+}
+
+.whishlist-trendyProductNameInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.whishlist-trendyProductNameInfo a {
+  text-decoration: none;
+  color: black;
+}
+
+.whishlist-trendyProductNameInfo h5 {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: left;
+}
+
+.whishlist-trendyProductRatingReviews {
+  display: flex;
+  gap: 10px;
+}
+
+.whishlist-trendyProductRatingReviews span {
+  color: #767676;
+  font-size: 14px;
+}
+
+.whishlist-trendyProductRatingStar {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.whishlist-trendyProductImagesCart {
+  display: none;
+}
+
+
+
+  @media (max-width: 1024px) {
+    .whishlist-trendyMainContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .whishlist-trendyMainContainer {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+
+  @media screen and (max-width: 1210px) {
+    .trendyProducts {
+      padding: 0 60px;
+    }
+  
+    .trendyTabs,.trendyTabContent {
+      width: 100%;
+    }
+  
+    .trendyProducts h2 {
+      font-size: 26px;
+    }
+  
+    .trendyProductImages {
+      width: 100%;
+      height: 250px;
+    }
+  
+    .trendyProductContainer h4 {
+      display: none;
+    }
+  
+    .trendyProductImagesCart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border-radius: 50%;
+      padding: 5px;
+      z-index: 8;
+      color: rgb(255, 255, 255);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .whishlist-trendyMainContainer {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+    }
+  
+    .whishlist-trendyProductImages {
+      width: 100%;
+      height: 240px;
+    }
+  }
+  
+  @media screen and (max-width: 450px) {
+    .whishlist-trendyProducts {
+      padding: 0 15px;
+    }
+  
+    .whishlist-trendyMainContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .whishlist-trendyProductImages {
+      width: 100%;
+      height: 235px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .whishlist-trendyProductImages {
+      width: 100%;
+      height: 170px;
+    }
+  
+    .whishlist-trendyProductNameInfo h5 {
+      font-size: 14px;
+    }
+  
+    .whishlist-trendyProductNameInfo p {
+      font-size: 12px;
+    }
+  
+    .whishlist-trendyProductRatingReviews {
+      display: flex;
+      gap: 5px;
+    }
+  
+    .whishlist-trendyProductRatingReviews span {
+      font-size: 12px;
+    }
+  
+    .whishlist-trendyProductRatingStar {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+  }
+  
+  

@@ -21,6 +21,7 @@ import TermsConditions from "./Pages/TermsConditions";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import Popup from "./Components/PopupBanner/Popup";
 import { Toaster } from "react-hot-toast";
+import Whishlist from './Components/Whishlist/whishlist';
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/BlogDetails" element={<BlogDetails />} />
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/whishlist" element={<Whishlist />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

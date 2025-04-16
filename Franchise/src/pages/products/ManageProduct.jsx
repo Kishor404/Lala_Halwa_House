@@ -1,5 +1,5 @@
 import * as Icons from "react-icons/tb";
-import Products from "../../api/Products.json";
+import Products from "../../api/Products.jsx";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/common/Input.jsx";
@@ -253,14 +253,14 @@ const status = [
                         />
                       </th>
                       <th className="td_id">id</th>
-                      <th className="td_image">image</th>
                       <th colSpan="4">name</th>
                       <th>price</th>
                       <th>store</th>
-                      <th>sku</th>
+                      <th>category</th>
+                      <th>slug</th>
                       <th>created at</th>
+                      <th className="td_status">quantity</th>
                       <th className="td_status">status</th>
-                      <th className="td_status">stock status</th>
                       <th className="td_action">#</th>
                     </tr>
                   </thead>
@@ -277,12 +277,7 @@ const status = [
                             />
                           </td>
                           <td className="td_id">{product.id}</td>
-                          <td className="td_image">
-                            <img
-                              src={product.images.thumbnail}
-                              alt={product.name}
-                            />
-                          </td>
+                          
                           <td colSpan="4">
                             <Link to={product.id}>{product.name}</Link>
                           </td>
@@ -291,21 +286,24 @@ const status = [
                             <b>{product.currency}</b>
                           </td>
                           <td>
-                            <Link>{product.brand}</Link>
+                            <Link>{product.franchise.name}, {product.franchise.location}</Link>
                           </td>
-                          <td>{product.sku}</td>
-                          <td>{product.availability_dates.start_date}</td>
+                          <td>
+                            <p>{product.category.name}</p>
+                          </td>
+                          <td>{product.slug}</td>
+                          <td>{product.created_at}</td>
                           <td className="td_status">
-                            {product.ratings.average_rating}
+                            {product.stock} g
                           </td>
                           <td className="td_status">
-                            {product.inventory.in_stock ? (
+                            {product.is_available ? (
                               <Badge
                                 label="In Stock"
                                 className="light-success"
                               />
-                            ) : product.inventory.quantity < 10 &&
-                              product.inventory.quantity > 0 ? (
+                            ) : product.quantity < 10 &&
+                              product.quantity > 0 ? (
                               <Badge
                                 label="Low Stock"
                                 className="light-warning"

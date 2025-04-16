@@ -99,7 +99,9 @@ const Navbar = () => {
               <RiShoppingBagLine size={22} />
             </Badge>
           </Link>
-          <FiHeart size={22} onClick={scrollToTop} />
+          <Link to="/whishlist" onClick={scrollToTop}>
+            <FiHeart size={22} onClick={scrollToTop} />
+          </Link>
           {/* <RiMenu2Line size={22} /> */}
         </div>
       </nav>
