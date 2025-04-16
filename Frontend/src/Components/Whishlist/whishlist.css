@@ -141,28 +141,28 @@
   
 
   @media screen and (max-width: 1210px) {
-    .trendyProducts {
+    .whishlist-trendyProducts {
       padding: 0 60px;
     }
   
-    .trendyTabs,.trendyTabContent {
+    .whishlist-trendyTabs,.whishlist-trendyTabContent {
       width: 100%;
     }
   
-    .trendyProducts h2 {
+    .whishlist-trendyProducts h2 {
       font-size: 26px;
     }
   
-    .trendyProductImages {
+    .whishlist-trendyProductImages {
       width: 100%;
       height: 250px;
     }
   
-    .trendyProductContainer h4 {
+    .whishlist-trendyProductContainer h4 {
       display: none;
     }
   
-    .trendyProductImagesCart {
+    .whishlist-trendyProductImagesCart {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -180,6 +180,7 @@
     .whishlist-trendyMainContainer {
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 20px;
+      width: 80%;
     }
   
     .whishlist-trendyProductImages {
@@ -233,4 +234,35 @@
     }
   }
   
+  @media screen and (max-width: 450px) {
+    .whishlist-trendyProductImages {
+      height: 235px;
+    }
+  
+    .whishlist-trendyProductNameInfo h5 {
+      font-size: 14px;
+    }
+  
+    .whishlist-trendyProductNameInfo p {
+      font-size: 12px;
+    }
+  
+    .whishlist-trendyProductRatingReviews {
+      gap: 5px;
+    }
+  
+    .whishlist-trendyProductRatingReviews span {
+      font-size: 12px;
+    }
+  
+    .whishlist-trendyProductRatingStar {
+      gap: 2px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .whishlist-trendyProductImages {
+      height: 170px;
+    }
+  }
   
