@@ -197,6 +197,19 @@
   font-size: 14px;
 }
 
+.footer_rit_csbs{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.466);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 1210px) {
   .footer {
     padding: 50px 60px;

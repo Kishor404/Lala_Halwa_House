@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import logo from "../../Assets/logo.png";
 import paymentIcon from "../../Assets/paymentIcon.png";
@@ -9,8 +9,20 @@ import { FaYoutube } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
+import RIT_CSBS from "./RIT_CSBS";
 
 const Footer = () => {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   const handleSubscribe = (e) => {
     e.preventDefault();
     alert("Subscribed Successfully");
@@ -141,7 +153,7 @@ const Footer = () => {
           <p>
             © {getCurrentYear()} Lala Halwa House. All Rights Reserved | Made By{" "}
             <a
-              href="https://google.com"
+              onClick={handleOpenPopup}
               target="_blank"
               rel="noreferrer"
               style={{ color: "#C22928", textDecoration: "none" }}
@@ -172,6 +184,8 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+
+      {showPopup && (<div className="footer_rit_csbs" onClick={handleClosePopup}><RIT_CSBS/></div>)}
     </>
   );
 };

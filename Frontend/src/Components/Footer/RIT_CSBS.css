@@ -1,0 +1,62 @@
+  
+  .rit-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: white;
+    width: 60%;
+    max-height: 80%;
+    border-radius: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    outline: 10px solid #ffffff;
+  }
+  
+  
+  .rit-section-title {
+    font-size: 20px;
+    margin: 30px;
+    margin-top: 40px;
+  }
+  
+  .rit-team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .rit-team-member {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .rit-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #dcdcdc;
+    margin-bottom: 10px;
+  }
+  .rit-avatar img{
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  
+  .rit-role {
+    font-size: 14px;
+    color: #666;
+    white-space: pre-line;
+  }
+  .rit-clg-name{
+    font-size: 20pt;
+    padding: 10px;
+  }
+  .rit-name{
+    font-size: 12pt;
+    color: rgb(0, 0, 0);
+  }
