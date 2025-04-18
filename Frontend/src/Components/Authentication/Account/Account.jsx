@@ -59,80 +59,143 @@ const Account = () => {
   };
 
   return (
-    <div className="contact-account-layout">
-      <aside className="contact-sidebar">
-        <div className="contact-profile">
-        <div className="contact-avatar"><span>{userData.name.charAt(0)}</span></div>
+    <div className="Account-account-layout">
+      <aside className="Account-sidebar">
+        <div className="Account-profile">
+        <div className="Account-avatar"><span>{userData.name.charAt(0)}</span></div>
 
-          <div className="contact-name">{userData.name}</div>
-          <div className="contact-phone">{userData.phone}</div>
+          <div className="Account-name">{userData.name}</div>
+          <div className="Account-phone">{userData.phone}</div>
         </div>
-        <nav className="contact-nav">
-  <button className="contact-nav-btn active"><FaBoxOpen /> Orders History</button>
-  <button className="contact-nav-btn"><FaShoppingCart /> View Cart</button>
-  <button className="contact-nav-btn"><FaChartBar /> Feedbacks</button>
-  <div className="contact-support">Support</div>
-  <button className="contact-nav-btn"><FaEnvelope /> Contact Us</button>
-</nav>
-        <button className="contact-logout-side" onClick={handleLogout}>Logout</button>
-      </aside>
 
-      <main className="contact-account-content">
-        <div className="contact-account-header">
-          <h2>Account</h2>
-          <button className="contact-logout-main" onClick={handleLogout}>Logout</button>
-        </div>
-        <p className="contact-subtitle">Review and update your account details</p>
-        <p className="contact-description">Please make sure these details are up to date as they'll be used for your orders and communication with the hotels.</p>
 
-        <div className="contact-account-card">
-          <div className="contact-account-info">
-          <span className="contact-icon"><FaUserEdit  /></span>
+        {/* ========== MObile ========== */}
+
+        
+
+        <main className="Account-account-content Account-account-content-mobile">
+        <button className="Account-logout-main Account-logout-main-mobile" onClick={handleLogout}>Logout</button>
+        <div className="Account-account-card Account-account-card-mobile">
+          <div className="Account-account-info">
+          <span className="Account-icon"><FaUserEdit  /></span>
             <div>
               <h3>{userData.name}</h3>
               <p>Please make sure these details are up to date as they'll be used for your orders and communication with the hotels.</p>
             </div>
           </div>
 
-          <div className="contact-form-grid">
-            <div className="contact-form-group">
+          <div className="Account-form-grid Account-form-grid-mobile">
+            <div className="Account-form-group">
               <label>Your Name</label>
               <input type="text" name="name" value={userData.name} onChange={handleChange} />
             </div>
-            <div className="contact-form-group">
+            <div className="Account-form-group">
               <label>Phone</label>
               <input type="text" name="phone" value={userData.phone} onChange={handleChange} />
             </div>
-            <div className="contact-form-group">
+            <div className="Account-form-group">
               <label>Email</label>
               <input type="email" name="email" value={userData.email} onChange={handleChange} />
             </div>
-            <div className="contact-form-group">
+            <div className="Account-form-group">
               <label>Country</label>
               <input type="text" name="country" value={userData.country} onChange={handleChange} />
             </div>
-            <div className="contact-form-group">
+            <div className="Account-form-group">
               <label>State</label>
               <input type="text" name="state" value={userData.state} onChange={handleChange} />
             </div>
-            <div className="contact-form-group">
+            <div className="Account-form-group">
               <label>Address</label>
               <input type="text" name="address" value={userData.address} onChange={handleChange} />
             </div>
-            <div className="contact-form-group">
+            <div className="Account-form-group">
               <label>Landmark</label>
               <input type="text" name="landmark" value={userData.landmark} onChange={handleChange} />
             </div>
-            <div className="contact-form-group">
+            <div className="Account-form-group">
               <label>Pincode</label>
               <input type="text" name="pincode" value={userData.pincode} onChange={handleChange} />
             </div>
           </div>
 
-          <p className="contact-note">*Your data will be handled with care.</p>
-          <div className="contact-update-btn-container">
-  <button className="contact-update-btn" onClick={handleUpdate}>Update</button>
-</div>
+          <p className="Account-note">*Your data will be handled with care.</p>
+          <div className="Account-update-btn-container Account-update-btn-container-mobile">
+            <button className="Account-update-btn" onClick={handleUpdate}>Update</button>
+          </div>
+
+        </div>
+      </main>
+
+      {/* ================================= */}
+
+      
+        <nav className="Account-nav">
+          <button className="Account-nav-btn active Account-nav-btn-mobile"><FaBoxOpen /> Orders History</button>
+          <button className="Account-nav-btn Account-nomobile"><FaShoppingCart /> View Cart</button>
+          <button className="Account-nav-btn Account-nav-btn-mobile"><FaChartBar /> Feedbacks</button>
+          <div className="Account-support Account-nomobile">Support</div>
+          <button className="Account-nav-btn Account-nomobile"><FaEnvelope /> Contact Us</button>
+        </nav>
+        <button className="Account-logout-side Account-nomobile" onClick={handleLogout}>Logout</button>
+      </aside>
+
+      <main className="Account-account-content">
+        <div className="Account-account-header">
+          <h2>Account</h2>
+          <button className="Account-logout-main" onClick={handleLogout}>Logout</button>
+        </div>
+        <p className="Account-subtitle">Review and update your account details</p>
+        <p className="Account-description">Please make sure these details are up to date as they'll be used for your orders and communication with the hotels.</p>
+
+        <div className="Account-account-card">
+          <div className="Account-account-info">
+          <span className="Account-icon"><FaUserEdit  /></span>
+            <div>
+              <h3>{userData.name}</h3>
+              <p>Please make sure these details are up to date as they'll be used for your orders and communication with the hotels.</p>
+            </div>
+          </div>
+
+          <div className="Account-form-grid">
+            <div className="Account-form-group">
+              <label>Your Name</label>
+              <input type="text" name="name" value={userData.name} onChange={handleChange} />
+            </div>
+            <div className="Account-form-group">
+              <label>Phone</label>
+              <input type="text" name="phone" value={userData.phone} onChange={handleChange} />
+            </div>
+            <div className="Account-form-group">
+              <label>Email</label>
+              <input type="email" name="email" value={userData.email} onChange={handleChange} />
+            </div>
+            <div className="Account-form-group">
+              <label>Country</label>
+              <input type="text" name="country" value={userData.country} onChange={handleChange} />
+            </div>
+            <div className="Account-form-group">
+              <label>State</label>
+              <input type="text" name="state" value={userData.state} onChange={handleChange} />
+            </div>
+            <div className="Account-form-group">
+              <label>Address</label>
+              <input type="text" name="address" value={userData.address} onChange={handleChange} />
+            </div>
+            <div className="Account-form-group">
+              <label>Landmark</label>
+              <input type="text" name="landmark" value={userData.landmark} onChange={handleChange} />
+            </div>
+            <div className="Account-form-group">
+              <label>Pincode</label>
+              <input type="text" name="pincode" value={userData.pincode} onChange={handleChange} />
+            </div>
+          </div>
+
+          <p className="Account-note">*Your data will be handled with care.</p>
+          <div className="Account-update-btn-container">
+            <button className="Account-update-btn" onClick={handleUpdate}>Update</button>
+          </div>
 
         </div>
       </main>

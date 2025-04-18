@@ -1,12 +1,12 @@
 /* Layout */
-.contact-account-layout {
+.Account-account-layout {
     display: flex;
     min-height: 100vh;
     font-family: 'Segoe UI', sans-serif;
   }
   
   /* Sidebar */
-  .contact-sidebar {
+  .Account-sidebar {
     background-color: #074aab;
     color: #fff;
     width: 270px;
@@ -18,14 +18,14 @@
  
   
   
-  .contact-profile {
+  .Account-profile {
     text-align: left;
     margin-left: 20px;
     margin-top: 70px;
     margin-bottom: 40px;
     padding-bottom: 0;
   }
-  .contact-avatar {
+  .Account-avatar {
     background:#fff;
     color: #074aab;
     font-size: 24px;
@@ -41,29 +41,29 @@
     transform: rotate(45deg);
   }
   
-  .contact-avatar span {
+  .Account-avatar span {
     transform: rotate(-45deg); /* Rotate text back to normal */
     display: inline-block;
   }
   
   
-  .contact-name {
+  .Account-name {
     font-size: 18px;
     margin-top: 20px;
   }
   
-  .contact-phone {
+  .Account-phone {
     font-size: 14px;
   }
   
-  .contact-nav {
+  .Account-nav {
    
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
   
-  .contact-nav-btn {
+  .Account-nav-btn {
     background: none;
     color:#fff;
     border: none;
@@ -72,16 +72,16 @@
     padding: 12px;
     border-radius: 12px;
     cursor: pointer;
-    transition: background 0.contact-3s;
+    transition: background-color 0.3s;
   }
   
-  .contact-nav-btn:hover,
-  .contact-nav-btn.contact-active {
+  .Account-nav-btn:hover,
+  .Account-nav-btn.Account-active {
     background-color:#fff;
     color: #074aab;
   }
   
-  .contact-support {
+  .Account-support {
     margin: 25px 0 0;
     margin-top: 20px;
     font-size: 14px;
@@ -89,7 +89,7 @@
     padding-left: 2px;
   }
   
-  .contact-logout-side {
+  .Account-logout-side {
     margin-top: 30px;
     background:#fff;
     color: #074aab;
@@ -101,7 +101,7 @@
   }
   
   /* Main Content */
-  .contact-account-content {
+  .Account-account-content {
     flex: 1;
     padding: 40px;
     
@@ -109,7 +109,7 @@
   }
  
   
-  .contact-account-header {
+  .Account-account-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,13 +117,13 @@
     
     margin-left: 50px;
   }
-  .contact-account-header h2 {
+  .Account-account-header h2 {
     font-weight: 400; 
     font-size: 24px;  
   }
   
   
-  .contact-logout-main {
+  .Account-logout-main {
     background: #ff3131;
     color:#fff;
     padding: 10px 40px;
@@ -134,14 +134,14 @@
     margin-right: 40px;
   }
   
-  .contact-subtitle {
+  .Account-subtitle {
     font-size: 20px;
     font-weight: 500;
     margin-top: 20px;
     margin-left: 50px;
   }
   
-  .contact-description {
+  .Account-description {
     font-size: 14px;
     color: #555;
     max-width: 500px;
@@ -149,7 +149,7 @@
     margin-left: 50px;
   }
   
-  .contact-account-card {
+  .Account-account-card {
     background: #e9f1f9;
     padding: 24px;
     border-radius: 16px;
@@ -159,27 +159,27 @@
     margin-right: 40px;
   }
   
-  .contact-account-info {
+  .Account-account-info {
     display: flex;
     gap: 16px;
     align-items: flex-start;
     margin-bottom: 20px;
   }
   
-  .contact-account-info h3 {
+  .Account-account-info h3 {
     font-size: 18px;
     font-weight: 500; 
     margin: 0;
    
   }
   
-  .contact-account-info p {
+  .Account-account-info p {
     font-size: 14px;
     color: #6b6c6d;
     
   }
   
-  .contact-icon {
+  .Account-icon {
     font-size: 38px;
     margin: 5px;
   }
@@ -188,7 +188,7 @@
 
   
   /* Form Fields */
-  .contact-form-grid {
+  .Account-form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -196,24 +196,24 @@
     margin-left: 10px;
   }
   
-  .contact-form-grid.contact-single-col {
+  .Account-form-grid.Account-single-col {
     grid-template-columns: 1fr;
     
   }
   
-  .contact-form-group {
+  .Account-form-group {
     display: flex;
     flex-direction: column;
     
   }
   
-  .contact-form-group label {
+  .Account-form-group label {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 5px;
   }
   
-  .contact-form-group input {
+  .Account-form-group input {
     padding: 10px;
     border-radius: 8px;
     border: 0px solid #e7eff7;
@@ -222,12 +222,12 @@
   }
   
   /* Footer */
-  .contact-note {
+  .Account-note {
     font-size: 13px;
     color: black;
     margin-top: 20px;
   }
-  .contact-update-btn-container {
+  .Account-update-btn-container {
     display: flex;
     justify-content: flex-end;
 
@@ -236,7 +236,7 @@
   }
   
   
-  .contact-update-btn {
+  .Account-update-btn {
     background: #024dbc;
     color:#fff;
     padding: 12px 30px;
@@ -245,4 +245,115 @@
     font-size: 17px;
     cursor: pointer;
   }
+
+  .Account-account-content-mobile {
+    display: none;
+  }
   
+
+  @media screen and (max-width: 1200px) {
+    
+    .Account-form-group input{
+      margin-right: 30px;
+    }
+    .Account-update-btn-container{
+      margin-right: 30px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .Account-sidebar{
+      width: 100%;
+      align-items: center;
+    }
+    .Account-profile{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px 0;
+    }
+    .Account-avatar{
+      width: 70px;
+      height: 70px;
+      margin-bottom:20px ;
+    }
+    .Account-account-content{
+      display: none;
+    }
+    .Account-account-content-mobile {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      margin: 0 20px;
+      background-color: transparent;
+      color: black;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 40px;
+      padding: 0 40px;
+    }
+    .Account-account-card-mobile{
+      margin: 0;
+    }
+    .Account-logout-main-mobile{
+      margin: 0;
+      margin: 20px 0px;
+    }
+    .Account-nomobile{
+      display: none;
+    }
+    .Account-nav-btn-mobile{
+      background-color: white;
+      color: #024dbc;
+      text-align: center;
+      padding: 15px 30px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .Account-form-grid-mobile{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .Account-update-btn-container-mobile{
+      margin-right: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .Account-profile{
+      padding: 10px;
+    }
+    .Account-account-info p{
+      font-size: 10px;
+    }
+    .Account-account-info{
+      align-items: center;
+    }
+    .Account-account-info h3{
+      font-size: 14px;
+    }
+    .Account-form-group label{
+      font-size: 12px;
+    }
+    .Account-form-group input{
+      font-size: 12px;
+    }
+    .Account-note{
+      font-size: 10px;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .Account-account-content-mobile{
+      padding: 0 0px;
+    }
+    
+  }
