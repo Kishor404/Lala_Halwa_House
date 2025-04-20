@@ -1,168 +1,429 @@
-.blogListHeaderContainer {
-  border: 2px solid #e4e4e4;
-  padding: 10px;
-  margin: 10px;
-  margin-bottom: 50px;
+/* General Styles for Text with Background */
+.franchise-requirementText {
+  font-size: 15px;
+  color: #fff; /* White text */
+  font-weight: 500;
+  line-height: 1.4;
+  background-color: #007bff; /* Blue background */
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
 }
 
-.blogListHeader {
-  background-image: url(../../../Assets/pattern_bg.png);
-  background-size: cover;
-  background-color: #eeeeee;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 140px;
-  gap: 15px;
-  height: 440px;
+/* Blog Container */
+.franchise-blogDetailsSectionContainer {
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.blogListHeader h2 {
-  font-size: 60px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.blogListHeaderCategories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.blogListHeaderCategories p {
-  font-size: 16px;
-  font-weight: 600;
+/* Banner Styles */
+.franchise-banner {
   position: relative;
+  width: 100vw;
+  height: 180px;
+  background-color: #f7f7f7;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 120px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.franchise-bannerText {
+  color: #000;
+  font-size: 36px;
+  font-weight: 700;
+  
+  z-index: 2;
+  width: 100%;
+}
+
+.franchise-triangle1,
+.franchise-triangle2,
+.franchise-triangle3 {
+  position: absolute;
+  background-color: #e0e0e0;
+  opacity: 0.5;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+.franchise-triangle1 {
+  width: 80px;
+  height: 80px;
+  top: 20px;
+  left: 60%;
+}
+
+.franchise-triangle2 {
+  width: 40px;
+  height: 40px;
+  top: 100px;
+  left: 45%;
+  opacity: 0.3;
+}
+
+.franchise-triangle3 {
+  width: 60px;
+  height: 60px;
+  top: 30px;
+  left: 85%;
+  opacity: 0.2;
+}
+
+/* Requirements Section */
+.franchise-requirementsTitle {
+  font-size: 28px;
+  margin: 40px 100px;
+  color: #222;
+}
+
+.franchise-requirementsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 80px;
+  padding: 0 100px 60px;
+  box-sizing: border-box;
+}
+
+.franchise-requirementItem {
+  background-color: #e6e6e6;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.franchise-icon{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.franchise-icon-element{
+  font-size: 60px;
+}
+
+.franchise-requirementItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Franchise Policy */
+.franchise-franchisePolicySection {
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 40px;
+  color: #333;
+  box-sizing: border-box;
+}
+.franchise-franchisePolicySection p{
+  padding-top: 20px;
+  text-indent: 70px;
+  text-align: justify;
+  font-size: 15pt;
+}
+
+/* Why Franchise Section */
+.franchise-whyFranchiseSection {
+  padding: 40px 100px;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.franchise-whyFranchiseTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.franchise-whyFranchiseList {
+  list-style-type: disc;
+  font-size: 20px;
+  line-height: 1.6;
+  padding: 0 30px;
+}
+.franchise-whyFranchiseList li{
+  margin-bottom: 15px;
+}
+
+.franchise-setupFranchiseWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.franchise-setupFormBox {
+  flex: 1;
+  min-width: 300px;
+}
+
+.franchise-setupTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.franchise-setupDescription {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.franchise-franchiseForm .franchise-formInputs {
+  display: right;
+  gap: 200px;
+  margin-bottom: 75px;
+  flex-wrap: wrap;
+}
+
+.franchise-franchiseForm input {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.franchise-messageArea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+.franchise-submitButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.blogListHeaderCategories p::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0;
-  border-bottom: 2px solid black;
-  transition: width 0.2s ease;
+.franchise-submitButton:hover {
+  background-color: #0056b3;
 }
 
-.blogListHeaderCategories p:hover::after {
-  width: 60%;
-}
-
-.blogListHeaderCategories p:hover::after,
-.blogListHeaderCategories p.activeCategory::after {
-  width: 60%;
-}
-
-.blogPostListContainer {
-  padding: 0 160px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  grid-row-gap: 50px;
-}
-
-.blogPost {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.blogPostThumb img {
-  width: 100%;
-  height: 100%;
-}
-
-.blogPostContent {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.blogPostContentDate {
-  display: flex;
-  gap: 30px;
-}
-
-.blogPostContentDate p {
-  font-size: 14px;
-  color: #767676;
-  text-transform: uppercase;
-}
-
-.blogPostContentHeading a {
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
-}
-
-.blogPostContentDescription p {
-  font-size: 14px;
+.franchise-noteText {
+  font-size: 13px;
+  color: #666;
   margin-top: 10px;
 }
 
-.blogPostContentReadMore a {
-  text-decoration: none;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: black;
-  font-weight: 500;
-  position: relative;
+.franchise-setupImageBox {
+  flex: 1;
+  min-width: 300px;
 }
 
-.blogPostContentReadMore a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 70%;
-  border-bottom: 2px solid black;
-  transition: width 0.2s ease;
+.franchise-setupImageBox img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-.blogPostContentReadMore a:hover::after {
+/* Setup Franchise Section */
+.franchise-setupFranchiseSection {
+  margin: 0 100px;
+}
+
+/* Wrapper now stacks vertically for full‑width text first */
+.franchise-setupFranchiseWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Text box spans full width */
+.franchise-setupFormBox {
   width: 100%;
 }
 
-.blogListShowMore {
-  text-align: center;
+/* Styling for the form and text remain unchanged */
+.franchise-setupTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.franchise-setupDescription {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.franchise-franchiseForm .franchise-formInputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.franchise-franchiseForm input {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin-top: 60px;
+}
+
+.franchise-messageArea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+.franchise-submitButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-/* responsive */
-
-@media screen and (max-width: 1210px) {
-  .blogPostListContainer {
-    padding: 0 60px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .blogListHeader {
-    padding-left: 40px;
-  }
+.franchise-submitButton:hover {
+  background-color: #0056b3;
 }
 
-@media screen and (max-width: 450px) {
-  .blogListHeaderContainer {
-    margin-bottom: 20px;
-  }
+.franchise-noteText {
+  font-size: 13px;
+  color: #666;
+  margin-top: 10px;
+}
 
-  .blogListHeader {
-    height: 240px;
-    padding-left: 35px;
-  }
+/* Image box centered and smaller */
+.franchise-setupImageBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-  .blogPostListContainer {
-    padding: 0 15px;
-    grid-template-columns: repeat(1, 1fr);
-  }
+.franchise-setupImageBox img {
+  width: 300px;      /* smaller image */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
 
-  .blogListHeader h2 {
-    font-size: 37px;
-  }
+.franchise-setupFranchiseWrapper {
+  display: flex;
+  flex-direction: row;      /* side-by-side layout */
+  align-items: flex-start;  /* top-align both boxes */
+  gap: 40px;
+  flex-wrap: wrap;          /* will wrap only on very small screens */
+}
+
+/* Left: form and text */
+
+
+/* Submit button & note */
+.franchise-submitButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.franchise-form-row {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.franchise-three-cols .franchise-form-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.franchise-full-width {
+  flex: 1;
+}
+
+.franchise-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.franchise-form-group label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+form input {
+  padding: 10px;
+  background-color: #f0f0f0; /* light grey background */
+  border: none;              /* remove border */
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  color: #333;
+}
+
+form input::placeholder {
+  color: #999;
+}
+.franchise-noteAndButtonRow {
+  display: flex;
+  
+ 
+  gap: 20px; /* Optional: space between note and button */
+  margin-top: 20px;
+}
+
+
+.franchise-note {
+  font-size: 12px;
+  color: #555;
+  
+  margin-top: 50; /* Remove top margin since it's now in a row */
+}
+
+
+
+
+/* Right: image fixed width */
+.franchise-setupImageBox {
+  flex: 0 0 400px;
+}
+
+.franchise-setupImageBox img {
+  width: 80%;
+  margin-top: 16px;
+  max-width: 250px;
+  border-radius: 20px;
+  object-fit: cover;
 }
