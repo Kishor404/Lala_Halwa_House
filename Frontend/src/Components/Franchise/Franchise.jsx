@@ -1,5 +1,5 @@
 import React from "react";
-import "./BlogList.css";
+import "./Franchise.css";
 import { BiExpand } from "react-icons/bi";
 import { BiSolidCard } from "react-icons/bi";
 import { BiLogoAudible } from "react-icons/bi";
@@ -11,9 +11,9 @@ import { BiPackage } from "react-icons/bi";
 import { BiSolidHot } from "react-icons/bi";
 import { BiSolidLeaf } from "react-icons/bi";
 import { BiSolidDashboard } from "react-icons/bi";
-import sweetshop from "../../../Assets/sweetshop.png";
+import sweetshop from "../../Assets/sweetshop.png";
 
-const BlogList = () => {
+const Franchise = () => {
   const requirements = [
     {name:"10ft x 10ft Shop",icon:<BiExpand className="franchise-icon-element"/>},
     {name:"4ft Display Counter x 2",icon:<BiSolidCard className="franchise-icon-element" />},
@@ -135,4 +135,4 @@ const BlogList = () => {
   );
 };
 
-export default BlogList;
+export default Franchise;

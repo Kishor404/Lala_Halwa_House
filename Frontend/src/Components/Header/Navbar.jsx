@@ -75,7 +75,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/blog" onClick={scrollToTop}>
+                <Link to="/franchise" onClick={scrollToTop}>
                   FRANCHISE
                 </Link>
               </li>
@@ -170,7 +170,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                <Link to="/blog" onClick={scrollToTop}>
+                <Link to="/franchise" onClick={scrollToTop}>
                   FRANCHISE
                 </Link>
               </li>
