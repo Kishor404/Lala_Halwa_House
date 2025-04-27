@@ -100,7 +100,10 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+  width: 100%; /* add this */
+  max-width: 100%; /* ensures it doesn't overflow */
 }
+
 .franchise-icon{
   width: 100%;
   height: 60%;
@@ -143,6 +146,7 @@
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 20px;
+  margin-left: 80px;
   color: #222;
 }
 
@@ -150,6 +154,8 @@
   list-style-type: disc;
   font-size: 20px;
   line-height: 1.6;
+  text-align: justify;
+
   padding: 0 30px;
 }
 .franchise-whyFranchiseList li{
@@ -167,7 +173,9 @@
 .franchise-setupFormBox {
   flex: 1;
   min-width: 300px;
+  margin-bottom: 150px;
 }
+
 
 .franchise-setupTitle {
   font-size: 24px;
@@ -244,6 +252,7 @@
 /* Setup Franchise Section */
 .franchise-setupFranchiseSection {
   margin: 0 100px;
+  
 }
 
 /* Wrapper now stacks vertically for full‑width text first */
@@ -400,6 +409,7 @@
 
 
 
+
 /* Right: image fixed width */
 .franchise-setupImageBox {
   flex: 0 0 400px;
@@ -411,4 +421,381 @@
   max-width: 250px;
   border-radius: 20px;
   object-fit: cover;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .franchise-banner {
+    padding: 0 40px;
+    height: 160px;
+  }
+
+  .franchise-requirementsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    justify-content: center;
+  }
+
+  
+
+  .franchise-whyFranchiseList {
+    padding: 0 15px;
+    font-size: 18px;
+  }
+
+  .franchise-setupFranchiseWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .franchise-setupImageBox {
+    width: 100%;
+    text-align: center;
+  }
+
+  .franchise-setupImageBox img {
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .franchise-bannerText {
+    font-size: 24px;
+  }
+
+  .franchise-requirementsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .franchise-requirementsTitle,
+ 
+  .franchise-setupTitle {
+    font-size: 22px;
+    text-align: left;
+    margin: 30px 40px;
+  }
+  .franchise-whyFranchiseTitle{
+    font-size: 22px;
+    text-align: left;
+    margin: 60px 40px;
+    margin-bottom: 0px;
+
+  }
+
+
+  .franchise-franchisePolicySection p,
+  .franchise-setupDescription,
+  .franchise-whyFranchiseList {
+    font-size: 14px;
+  }
+
+  .franchise-form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .franchise-noteAndButtonRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .franchise-banner {
+    height: 120px;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 480px) {
+   
+  
+    .franchise-requirementItem {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  
+
+  .franchise-bannerText {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .franchise-submitButton {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .franchise-form-group label {
+    font-size: 13px;
+  }
+
+  .franchise-note {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 790px) {
+  /* Make section padding smaller */
+  .franchise-setupFranchiseSection {
+    margin: 0 10px;
+  }
+  .franchise-setupTitle{
+    margin-left: 0;
+  }
+
+  /* Make description text full width and more readable */
+  .franchise-setupDescription {
+    font-size: 14px;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+
+  /* Form input stacking + spacing */
+  .franchise-form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .franchise-form-group input,
+  .franchise-messageArea {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .franchise-form-group {
+    width: 100%;
+  }
+
+  /* Style the Setup button */
+  .franchise-submitButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .franchise-submitButton:hover {
+    background-color: #0056b3;
+  }
+
+  /* Align button and note text vertically */
+  .franchise-noteAndButtonRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .franchise-note {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Adjust image styling */
+  .franchise-setupImageBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    width: 100%;
+  }
+
+  .franchise-setupImageBox img {
+    width: 80%;
+    max-width: 250px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 1024px) {
+  .franchise-requirementsGrid {
+    grid-template-columns: repeat(3, 1fr); /* tablet */
+    gap: 40px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .franchise-requirementsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+    gap: 30px;
+   
+  
+  }
+}
+@media (max-width: 400px) {
+  .franchise-requirementsGrid {
+    grid-template-columns: repeat(2, 1fr); /* still 2 per row */
+    gap: 20px;
+    justify-content: center; 
+  }
+}
+
+
+
+@media (max-width: 400px) {
+  .franchise-form-group input,
+  .franchise-messageArea {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .franchise-form-group {
+    width: 100%;
+    margin-bottom: 0px;
+
+  }
+
+  .franchise-form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .franchise-franchisePolicySection,
+  .franchise-whyFranchiseSection,
+  .franchise-setupFranchiseSection,
+  .franchise-requirementsGrid,
+  .franchise-whyFranchiseList,
+  .franchise-requirementsTitle,
+  .franchise-whyFranchiseTitle,
+  .franchise-setupDescription,
+  .franchise-setupFormBox,
+  .franchise-setupTitle {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-left: 0 !important;
+    
+    margin-right: 0 !important;
+  }
+  .franchise-requirementText {
+    font-size: 10px !important;
+    
+  }
+  .franchise-banner {
+    padding: 0 16px;
+  }
+
+  .franchise-requirementItem {
+    max-width: 100%;
+  }
+}
+@media (max-width: 320px) {
+  .franchise-franchisePolicySection,
+  .franchise-whyFranchiseSection,
+  .franchise-setupFranchiseSection,
+  .franchise-requirementsGrid,
+  .franchise-whyFranchiseList,
+  .franchise-requirementsTitle,
+  .franchise-whyFranchiseTitle,
+  .franchise-setupTitle ,
+  .franchise-setupDescription,
+  .franchise-setupFormBox{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-left: 0 !important;
+    
+    margin-right: 0 !important;
+  }
+  .franchise-requirementText {
+    font-size: 08px !important;
+    
+  }
+
+  .franchise-banner {
+    padding: 0 16px;
+  }
+
+  .franchise-requirementItem {
+    max-width: 100%;
+  }
+}
+/* Fix: Right-side gap for boxes at small screens */
+@media (max-width: 480px) {
+  .franchise-requirementsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box;
+  }
+
+  .franchise-requirementItem {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Ensure margin is not collapsing the layout */
+@media (max-width: 400px) {
+  .franchise-requirementsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    justify-content: center; 
+  }
+}
+/* Ensure margin is not collapsing the layout */
+
+@media (max-width: 360px) {
+  body,
+  h1, h2, h3, h4, h5, h6,
+  p,
+  label,
+  input,
+  textarea,
+  button,
+  .franchise-requirementsTitle,
+  .franchise-whyFranchiseTitle,
+  .franchise-setupTitle,
+  .franchise-whyFranchiseList,
+  .franchise-note,
+  .franchise-messageArea {
+    font-size: 12px !important;
+  }
+
+  .franchise-icon-element {
+    font-size: 40px !important;
+  }
+
+  .franchise-submitButton {
+    font-size: 14px !important;
+  }
+.franchise-requirementsGrid{
+  margin-bottom: 0px;
+}
+.franchise-whyFranchiseTitle{
+  margin-top: 0px;
+}
+
+.franchise-setupTitle{
+  margin-top: 0px;
+}
+}
+
+
+
+@media (max-width: 480px) {
+  .franchise-setupFormBox {
+    margin-bottom: 15px !important; /* was 150px — now reduced */
+  }
+
+  .franchise-setupImageBox {
+    margin-top: 0 !important;
+  }
+}
+@media (max-width: 800px) {
+  .franchise-setupFormBox {
+    margin-bottom: 15px !important; /* was 150px — now reduced */
+  }
+
+  .franchise-setupImageBox {
+    margin-top: 0 !important;
+  }
 }

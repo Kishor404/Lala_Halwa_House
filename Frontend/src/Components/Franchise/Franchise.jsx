@@ -55,7 +55,7 @@ const Franchise = () => {
         LALA's Halwakaran is a heritage-rich sweet shop brand known for its traditional South Indian sweets, especially its legendary halwa. With a legacy of over four generations, LALA’s has become a symbol of authentic taste, premium quality, and unmatched craftsmanship in sweet making. We specialize in delivering a nostalgic culinary experience by combining age-old recipes with modern production techniques. Each sweet is made using ethnic preparation methods, pure ingredients, and no preservatives, ensuring a wholesome and delicious bite every time. With three state-of-the-art mass production units, LALA's Halwakaran ensures consistent quality, scalability, and timely delivery. Our mission is to spread the joy of traditional sweets across India by empowering passionate entrepreneurs through our franchise model. Whether it's for a festive celebration or a casual indulgence, LALA’s sweets bring families together with the warmth of tradition and the taste of home.
         </p>
       </section>
-
+  
       {/* Requirements Section */}
       <h2 className="franchise-requirementsTitle">Requirements for Setup</h2>
       <div className="franchise-requirementsGrid">
@@ -68,12 +68,14 @@ const Franchise = () => {
           </div>
         ))}
       </div>
+      <div className="franchise-whyFranchiseTitle">
+      Why Franchise With Lala's Halwa Karan
+
+      </div>
 
       {/* Why Franchise Section */}
       <section className="franchise-whyFranchiseSection">
-        <h2 className="franchise-whyFranchiseTitle">
-          Why Franchise With Lala's Halwa Karan
-        </h2>
+        
         <ul className="franchise-whyFranchiseList">
           {franchisePoints.map((point, index) => (
             <li key={index}>{point}</li>
