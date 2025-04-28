@@ -2,6 +2,7 @@
   background-color: #131ee2;
   background-image: url("../../../Assets/slideshow-pattern.png");
   background-size: cover;
+  background-position: center;
   padding: 0px 0px 0px 160px;
   display: flex;
   align-items: center;
