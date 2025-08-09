@@ -23,6 +23,9 @@ A fully functional e-commerce platform built for **Lala Halwa Karan**, a traditi
 - JWT Authentication
 
 ---
+## Product
+- [Lala's Halwa Karan](https://lalashalwakaran.com/)
+---
 
 ## 📦 Features
 
